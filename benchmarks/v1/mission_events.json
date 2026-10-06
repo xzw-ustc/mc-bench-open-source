@@ -1,0 +1,263 @@
+[
+  {
+    "id": "event:coal_source_observed",
+    "task_id": "scout_coal_source",
+    "produced_state": "location:coal_source_known",
+    "kind": "exploration_observation",
+    "profiles": [
+      "forest_day",
+      "fixed_coal_shaft"
+    ],
+    "implementation_status": "implemented",
+    "trigger": {
+      "any_of": [
+        {
+          "path": "raw_observation.line_of_sight.coal_ore",
+          "operator": ">=",
+          "value": 1
+        },
+        {
+          "path": "raw_observation.nearby_blocks.coal_ore",
+          "operator": ">=",
+          "value": 1
+        }
+      ]
+    },
+    "snapshot_effect": {
+      "flags_add": [
+        "coal_source_known"
+      ]
+    },
+    "terminal_condition": {
+      "same_as": "trigger"
+    },
+    "observation_sources": [
+      {
+        "path": "raw_observation.line_of_sight.coal_ore",
+        "kind": "primary",
+        "meaning": "Ray observation directly sees coal ore.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.nearby_blocks.coal_ore",
+        "kind": "primary",
+        "meaning": "Local block grid contains coal ore.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.known_blocks",
+        "kind": "diagnostic",
+        "meaning": "Profile marker can audit deterministic coal placement but does not by itself satisfy the verifier.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ],
+    "notes": "Known block markers are diagnostic only; the agent must expose coal through an observation channel."
+  },
+  {
+    "id": "event:lit_shelter_observed",
+    "task_id": "build_lit_shelter",
+    "produced_state": "structure:lit_shelter",
+    "kind": "structure_observation",
+    "profiles": [
+      "forest_dusk"
+    ],
+    "implementation_status": "implemented",
+    "trigger": {
+      "all": [
+        {
+          "path": "raw_observation.nearby_blocks.torch",
+          "operator": ">=",
+          "value": 1
+        },
+        {
+          "path": "raw_observation.nearby_blocks.solid_blocks",
+          "operator": ">=",
+          "value": 60
+        },
+        {
+          "path": "player_stats.effective_light_level",
+          "operator": ">=",
+          "value": 7
+        },
+        {
+          "any_of": [
+            {
+              "path": "player_stats.effective_sky_light_level",
+              "operator": "<=",
+              "value": 7
+            },
+            {
+              "path": "player_stats.can_see_sky",
+              "operator": "==",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    "snapshot_effect": {
+      "flags_add": [
+        "lit_shelter"
+      ]
+    },
+    "terminal_condition": {
+      "same_as": "trigger"
+    },
+    "failure_condition": {
+      "path": "player_stats.is_alive",
+      "operator": "==",
+      "value": false
+    },
+    "observation_sources": [
+      {
+        "path": "raw_observation.nearby_blocks.torch",
+        "kind": "primary",
+        "meaning": "A torch is present in the local structure grid.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.nearby_blocks.solid_blocks",
+        "kind": "primary",
+        "meaning": "Enough non-air local blocks indicate a minimally enclosed structure.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.effective_light_level",
+        "kind": "primary",
+        "meaning": "The player location is lit.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ],
+    "notes": "Implemented as a local, structure-light proxy: nearby grid must contain a torch and enough solid blocks, effective light must be safe, and sky exposure must be low or blocked. No inventory or flag is injected; failure can terminate if the player is observed dead."
+  },
+  {
+    "id": "event:night_interval_survived",
+    "task_id": "survive_first_night",
+    "produced_state": "player:night_survived",
+    "kind": "temporal_survival",
+    "profiles": [
+      "forest_night"
+    ],
+    "implementation_status": "implemented",
+    "trigger": {
+      "all": [
+        {
+          "path": "player_stats.is_alive",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "operator": "elapsed_at_least",
+          "start_path": "stage_start.player_stats.total_time",
+          "end_path": "player_stats.total_time",
+          "fallback_start_path": "stage_start.player_stats.world_time",
+          "fallback_end_path": "player_stats.world_time",
+          "value": 1800
+        },
+        {
+          "path": "player_stats.world_time",
+          "operator": "time_of_day_between",
+          "min": 12000,
+          "max": 24000
+        }
+      ]
+    },
+    "snapshot_effect": {
+      "flags_add": [
+        "night_survived"
+      ]
+    },
+    "terminal_condition": {
+      "same_as": "trigger"
+    },
+    "failure_condition": {
+      "path": "player_stats.is_alive",
+      "operator": "==",
+      "value": false
+    },
+    "observation_sources": [
+      {
+        "path": "player_stats.is_alive",
+        "kind": "primary",
+        "meaning": "The player remains alive.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      },
+      {
+        "path": "player_stats.total_time",
+        "kind": "primary",
+        "meaning": "Elapsed ticks can prove the survival interval.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.world_time",
+        "kind": "primary",
+        "meaning": "World time can prove both elapsed interval and night phase.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ],
+    "notes": "Implemented as a long-duration survival terminal rule: the player must remain alive, the elapsed total/world time must reach the configured interval, and the final time must still be in the night window. Failure can terminate if the player is observed dead."
+  },
+  {
+    "id": "event:zombie_defeat_observed",
+    "task_id": "defeat_zombie",
+    "produced_state": "entity:zombie_defeated",
+    "kind": "combat_event",
+    "profiles": [
+      "forest_night"
+    ],
+    "implementation_status": "implemented",
+    "trigger": {
+      "any_of": [
+        {
+          "path": "counters.zombie_defeated",
+          "operator": ">=",
+          "value": 1
+        },
+        {
+          "path": "raw_observation.kill_entity.zombie",
+          "operator": ">=",
+          "value": 1
+        }
+      ]
+    },
+    "snapshot_effect": {
+      "counters_at_least": {
+        "zombie_defeated": 1
+      }
+    },
+    "terminal_condition": {
+      "same_as": "trigger"
+    },
+    "failure_condition": {
+      "path": "player_stats.is_alive",
+      "operator": "==",
+      "value": false
+    },
+    "observation_sources": [
+      {
+        "path": "counters.zombie_defeated",
+        "kind": "primary",
+        "meaning": "Normalized kill counter records a defeated zombie.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.kill_entity.zombie",
+        "kind": "supporting",
+        "meaning": "Raw MineRL kill-entity observation records zombie kills.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ],
+    "notes": "Implemented through normalized MineRL kill_entity statistics. The event succeeds only when a real zombie kill counter is observed; failure can terminate if the player is observed dead."
+  }
+]

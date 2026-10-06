@@ -1,0 +1,14 @@
+{
+  "catalog_dir": "benchmarks/v1",
+  "profile_dir": "benchmarks/v1",
+  "chain_id": "cross_domain_safe_night",
+  "environment_profile": "forest_progression",
+  "environment": {
+    "kind": "scripted"
+  },
+  "agent": {
+    "kind": "scripted"
+  },
+  "output_path": "runs/cross_domain_safe_night_scripted.json"
+}
+

@@ -1,0 +1,8 @@
+{
+  "catalog_dir": "benchmarks/v1",
+  "output_dir": "runs/suite-scripted",
+  "environment": {"kind": "scripted"},
+  "agent": {"kind": "scripted"},
+  "split_ids": ["core_progression", "transfer", "supplementary_diversity"],
+  "per_stage_profiles": false
+}

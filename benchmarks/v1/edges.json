@@ -1,0 +1,1887 @@
+[
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "scout_coal_source"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_log"
+  },
+  {
+    "source": "scout_coal_source",
+    "relation": "produces",
+    "target": "location:coal_source_known"
+  },
+  {
+    "source": "collect_log",
+    "relation": "produces",
+    "target": "item:oak_log",
+    "count": 1
+  },
+  {
+    "source": "item:oak_log",
+    "relation": "requires",
+    "target": "craft_planks",
+    "count": 1
+  },
+  {
+    "source": "craft_planks",
+    "relation": "produces",
+    "target": "item:oak_planks",
+    "count": 4
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_table",
+    "count": 4
+  },
+  {
+    "source": "craft_table",
+    "relation": "produces",
+    "target": "item:crafting_table",
+    "count": 1
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_wooden_pickaxe",
+    "count": 3
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_wooden_pickaxe"
+  },
+  {
+    "source": "craft_wooden_pickaxe",
+    "relation": "produces",
+    "target": "tool:wooden_pickaxe",
+    "count": 1
+  },
+  {
+    "source": "location:coal_source_known",
+    "relation": "requires",
+    "target": "collect_coal"
+  },
+  {
+    "source": "collect_coal",
+    "relation": "produces",
+    "target": "item:coal",
+    "count": 1
+  },
+  {
+    "source": "item:coal",
+    "relation": "requires",
+    "target": "craft_torch",
+    "count": 1
+  },
+  {
+    "source": "craft_torch",
+    "relation": "produces",
+    "target": "item:torch",
+    "count": 4
+  },
+  {
+    "source": "item:torch",
+    "relation": "requires",
+    "target": "build_lit_shelter"
+  },
+  {
+    "source": "build_lit_shelter",
+    "relation": "produces",
+    "target": "structure:lit_shelter"
+  },
+  {
+    "source": "structure:lit_shelter",
+    "relation": "requires",
+    "target": "survive_first_night"
+  },
+  {
+    "source": "survive_first_night",
+    "relation": "produces",
+    "target": "player:night_survived"
+  },
+  {
+    "source": "mine_cobblestone",
+    "relation": "produces",
+    "target": "item:cobblestone",
+    "count": 2
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "craft_stone_sword",
+    "count": 2
+  },
+  {
+    "source": "craft_stone_sword",
+    "relation": "produces",
+    "target": "tool:stone_sword",
+    "count": 1
+  },
+  {
+    "source": "tool:stone_sword",
+    "relation": "requires",
+    "target": "defeat_zombie"
+  },
+  {
+    "source": "defeat_zombie",
+    "relation": "produces",
+    "target": "entity:zombie_defeated"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_dirt"
+  },
+  {
+    "source": "collect_dirt",
+    "relation": "produces",
+    "target": "item:dirt"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_sand"
+  },
+  {
+    "source": "collect_sand",
+    "relation": "produces",
+    "target": "item:sand"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_gravel"
+  },
+  {
+    "source": "collect_gravel",
+    "relation": "produces",
+    "target": "item:gravel"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_seeds"
+  },
+  {
+    "source": "collect_seeds",
+    "relation": "produces",
+    "target": "item:wheat_seeds"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_flower"
+  },
+  {
+    "source": "collect_flower",
+    "relation": "produces",
+    "target": "item:poppy"
+  },
+  {
+    "source": "item:gravel",
+    "relation": "requires",
+    "target": "collect_flint"
+  },
+  {
+    "source": "collect_flint",
+    "relation": "produces",
+    "target": "item:flint"
+  },
+  {
+    "source": "craft_planks",
+    "relation": "consumes",
+    "target": "item:oak_log",
+    "count": 1
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_sticks",
+    "count": 2
+  },
+  {
+    "source": "craft_sticks",
+    "relation": "produces",
+    "target": "item:stick",
+    "count": 4
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_chest"
+  },
+  {
+    "source": "craft_chest",
+    "relation": "produces",
+    "target": "item:chest"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_oak_boat"
+  },
+  {
+    "source": "craft_oak_boat",
+    "relation": "produces",
+    "target": "item:oak_boat"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_wooden_axe"
+  },
+  {
+    "source": "craft_wooden_axe",
+    "relation": "produces",
+    "target": "tool:wooden_axe"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_wooden_sword"
+  },
+  {
+    "source": "craft_wooden_sword",
+    "relation": "produces",
+    "target": "tool:wooden_sword"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_wooden_shovel"
+  },
+  {
+    "source": "craft_wooden_shovel",
+    "relation": "produces",
+    "target": "tool:wooden_shovel"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_wooden_axe"
+  },
+  {
+    "source": "craft_wooden_axe",
+    "relation": "consumes",
+    "target": "item:oak_planks"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_wooden_sword"
+  },
+  {
+    "source": "craft_wooden_sword",
+    "relation": "consumes",
+    "target": "item:oak_planks"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_wooden_shovel"
+  },
+  {
+    "source": "craft_wooden_shovel",
+    "relation": "consumes",
+    "target": "item:oak_planks"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_wooden_pickaxe",
+    "count": 2
+  },
+  {
+    "source": "craft_wooden_pickaxe",
+    "relation": "consumes",
+    "target": "item:oak_planks",
+    "count": 3
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_wooden_axe"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_wooden_shovel"
+  },
+  {
+    "source": "craft_chest",
+    "relation": "consumes",
+    "target": "item:oak_planks"
+  },
+  {
+    "source": "craft_oak_boat",
+    "relation": "consumes",
+    "target": "item:oak_planks"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_torch",
+    "count": 1
+  },
+  {
+    "source": "craft_torch",
+    "relation": "consumes",
+    "target": "item:coal",
+    "count": 1
+  },
+  {
+    "source": "build_lit_shelter",
+    "relation": "produces",
+    "target": "environment:lit_area"
+  },
+  {
+    "source": "tool:wooden_pickaxe",
+    "relation": "requires",
+    "target": "collect_coal"
+  },
+  {
+    "source": "tool:wooden_pickaxe",
+    "relation": "requires",
+    "target": "mine_cobblestone"
+  },
+  {
+    "source": "tool:wooden_pickaxe",
+    "relation": "enables",
+    "target": "mine_cobblestone"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "craft_furnace",
+    "count": 8
+  },
+  {
+    "source": "craft_furnace",
+    "relation": "produces",
+    "target": "item:furnace",
+    "count": 1
+  },
+  {
+    "source": "craft_furnace",
+    "relation": "consumes",
+    "target": "item:cobblestone",
+    "count": 8
+  },
+  {
+    "source": "tool:wooden_pickaxe",
+    "relation": "requires",
+    "target": "collect_iron_ore_basic"
+  },
+  {
+    "source": "collect_iron_ore_basic",
+    "relation": "produces",
+    "target": "item:iron_ore",
+    "count": 1
+  },
+  {
+    "source": "item:iron_ore",
+    "relation": "requires",
+    "target": "smelt_iron_ingot",
+    "count": 1
+  },
+  {
+    "source": "item:furnace",
+    "relation": "requires",
+    "target": "smelt_iron_ingot",
+    "count": 1
+  },
+  {
+    "source": "item:coal",
+    "relation": "requires",
+    "target": "smelt_iron_ingot",
+    "count": 1
+  },
+  {
+    "source": "smelt_iron_ingot",
+    "relation": "produces",
+    "target": "item:iron_ingot",
+    "count": 1
+  },
+  {
+    "source": "smelt_iron_ingot",
+    "relation": "consumes",
+    "target": "item:iron_ore",
+    "count": 1
+  },
+  {
+    "source": "smelt_iron_ingot",
+    "relation": "consumes",
+    "target": "item:coal",
+    "count": 1
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_stone_sword",
+    "count": 1
+  },
+  {
+    "source": "craft_stone_sword",
+    "relation": "consumes",
+    "target": "item:cobblestone",
+    "count": 2
+  },
+  {
+    "source": "craft_stone_sword",
+    "relation": "consumes",
+    "target": "item:stick",
+    "count": 1
+  },
+  {
+    "source": "location:coal_source_known",
+    "relation": "enables",
+    "target": "collect_coal"
+  },
+  {
+    "source": "environment:lit_area",
+    "relation": "enables",
+    "target": "survive_first_night"
+  },
+  {
+    "source": "tool:wooden_sword",
+    "relation": "enables",
+    "target": "defeat_zombie"
+  },
+  {
+    "source": "item:oak_log",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_resource"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_resource"
+  },
+  {
+    "source": "item:stick",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_resource"
+  },
+  {
+    "source": "item:dirt",
+    "relation": "abstracts_to",
+    "target": "state_group:basic_block_resource"
+  },
+  {
+    "source": "item:sand",
+    "relation": "abstracts_to",
+    "target": "state_group:basic_block_resource"
+  },
+  {
+    "source": "item:gravel",
+    "relation": "abstracts_to",
+    "target": "state_group:basic_block_resource"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "abstracts_to",
+    "target": "state_group:stone_resource"
+  },
+  {
+    "source": "item:furnace",
+    "relation": "abstracts_to",
+    "target": "state_group:stone_resource"
+  },
+  {
+    "source": "item:coal",
+    "relation": "abstracts_to",
+    "target": "state_group:light_resource"
+  },
+  {
+    "source": "item:torch",
+    "relation": "abstracts_to",
+    "target": "state_group:light_resource"
+  },
+  {
+    "source": "collect_log",
+    "relation": "abstracts_to",
+    "target": "task_group:obtain_wood"
+  },
+  {
+    "source": "craft_planks",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_crafting"
+  },
+  {
+    "source": "craft_sticks",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_crafting"
+  },
+  {
+    "source": "craft_table",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_crafting"
+  },
+  {
+    "source": "craft_chest",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_crafting"
+  },
+  {
+    "source": "craft_oak_boat",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_crafting"
+  },
+  {
+    "source": "craft_wooden_pickaxe",
+    "relation": "abstracts_to",
+    "target": "task_group:wooden_tool_crafting"
+  },
+  {
+    "source": "craft_wooden_axe",
+    "relation": "abstracts_to",
+    "target": "task_group:wooden_tool_crafting"
+  },
+  {
+    "source": "craft_wooden_sword",
+    "relation": "abstracts_to",
+    "target": "task_group:wooden_tool_crafting"
+  },
+  {
+    "source": "craft_wooden_shovel",
+    "relation": "abstracts_to",
+    "target": "task_group:wooden_tool_crafting"
+  },
+  {
+    "source": "mine_cobblestone",
+    "relation": "abstracts_to",
+    "target": "task_group:stone_crafting"
+  },
+  {
+    "source": "craft_furnace",
+    "relation": "abstracts_to",
+    "target": "task_group:stone_crafting"
+  },
+  {
+    "source": "collect_dirt",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_resource_collection"
+  },
+  {
+    "source": "collect_sand",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_resource_collection"
+  },
+  {
+    "source": "collect_gravel",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_resource_collection"
+  },
+  {
+    "source": "collect_seeds",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_resource_collection"
+  },
+  {
+    "source": "collect_flower",
+    "relation": "abstracts_to",
+    "target": "task_group:basic_resource_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_birch_log"
+  },
+  {
+    "source": "collect_birch_log",
+    "relation": "produces",
+    "target": "item:birch_log"
+  },
+  {
+    "source": "item:birch_log",
+    "relation": "requires",
+    "target": "craft_birch_planks"
+  },
+  {
+    "source": "craft_birch_planks",
+    "relation": "produces",
+    "target": "item:birch_planks"
+  },
+  {
+    "source": "craft_birch_planks",
+    "relation": "consumes",
+    "target": "item:birch_log"
+  },
+  {
+    "source": "item:birch_planks",
+    "relation": "requires",
+    "target": "craft_birch_boat"
+  },
+  {
+    "source": "craft_birch_boat",
+    "relation": "produces",
+    "target": "item:birch_boat"
+  },
+  {
+    "source": "craft_birch_boat",
+    "relation": "consumes",
+    "target": "item:birch_planks"
+  },
+  {
+    "source": "item:birch_log",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "item:birch_planks",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "collect_birch_log",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_collection"
+  },
+  {
+    "source": "craft_birch_planks",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "craft_birch_boat",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_spruce_log"
+  },
+  {
+    "source": "collect_spruce_log",
+    "relation": "produces",
+    "target": "item:spruce_log"
+  },
+  {
+    "source": "item:spruce_log",
+    "relation": "requires",
+    "target": "craft_spruce_planks"
+  },
+  {
+    "source": "craft_spruce_planks",
+    "relation": "produces",
+    "target": "item:spruce_planks"
+  },
+  {
+    "source": "craft_spruce_planks",
+    "relation": "consumes",
+    "target": "item:spruce_log"
+  },
+  {
+    "source": "item:spruce_planks",
+    "relation": "requires",
+    "target": "craft_spruce_boat"
+  },
+  {
+    "source": "craft_spruce_boat",
+    "relation": "produces",
+    "target": "item:spruce_boat"
+  },
+  {
+    "source": "craft_spruce_boat",
+    "relation": "consumes",
+    "target": "item:spruce_planks"
+  },
+  {
+    "source": "item:spruce_log",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "item:spruce_planks",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "collect_spruce_log",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_collection"
+  },
+  {
+    "source": "craft_spruce_planks",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "craft_spruce_boat",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_jungle_log"
+  },
+  {
+    "source": "collect_jungle_log",
+    "relation": "produces",
+    "target": "item:jungle_log"
+  },
+  {
+    "source": "item:jungle_log",
+    "relation": "requires",
+    "target": "craft_jungle_planks"
+  },
+  {
+    "source": "craft_jungle_planks",
+    "relation": "produces",
+    "target": "item:jungle_planks"
+  },
+  {
+    "source": "craft_jungle_planks",
+    "relation": "consumes",
+    "target": "item:jungle_log"
+  },
+  {
+    "source": "item:jungle_planks",
+    "relation": "requires",
+    "target": "craft_jungle_boat"
+  },
+  {
+    "source": "craft_jungle_boat",
+    "relation": "produces",
+    "target": "item:jungle_boat"
+  },
+  {
+    "source": "craft_jungle_boat",
+    "relation": "consumes",
+    "target": "item:jungle_planks"
+  },
+  {
+    "source": "item:jungle_log",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "item:jungle_planks",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "collect_jungle_log",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_collection"
+  },
+  {
+    "source": "craft_jungle_planks",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "craft_jungle_boat",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_acacia_log"
+  },
+  {
+    "source": "collect_acacia_log",
+    "relation": "produces",
+    "target": "item:acacia_log"
+  },
+  {
+    "source": "item:acacia_log",
+    "relation": "requires",
+    "target": "craft_acacia_planks"
+  },
+  {
+    "source": "craft_acacia_planks",
+    "relation": "produces",
+    "target": "item:acacia_planks"
+  },
+  {
+    "source": "craft_acacia_planks",
+    "relation": "consumes",
+    "target": "item:acacia_log"
+  },
+  {
+    "source": "item:acacia_planks",
+    "relation": "requires",
+    "target": "craft_acacia_boat"
+  },
+  {
+    "source": "craft_acacia_boat",
+    "relation": "produces",
+    "target": "item:acacia_boat"
+  },
+  {
+    "source": "craft_acacia_boat",
+    "relation": "consumes",
+    "target": "item:acacia_planks"
+  },
+  {
+    "source": "item:acacia_log",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "item:acacia_planks",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "collect_acacia_log",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_collection"
+  },
+  {
+    "source": "craft_acacia_planks",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "craft_acacia_boat",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_dark_oak_log"
+  },
+  {
+    "source": "collect_dark_oak_log",
+    "relation": "produces",
+    "target": "item:dark_oak_log"
+  },
+  {
+    "source": "item:dark_oak_log",
+    "relation": "requires",
+    "target": "craft_dark_oak_planks"
+  },
+  {
+    "source": "craft_dark_oak_planks",
+    "relation": "produces",
+    "target": "item:dark_oak_planks"
+  },
+  {
+    "source": "craft_dark_oak_planks",
+    "relation": "consumes",
+    "target": "item:dark_oak_log"
+  },
+  {
+    "source": "item:dark_oak_planks",
+    "relation": "requires",
+    "target": "craft_dark_oak_boat"
+  },
+  {
+    "source": "craft_dark_oak_boat",
+    "relation": "produces",
+    "target": "item:dark_oak_boat"
+  },
+  {
+    "source": "craft_dark_oak_boat",
+    "relation": "consumes",
+    "target": "item:dark_oak_planks"
+  },
+  {
+    "source": "item:dark_oak_log",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "item:dark_oak_planks",
+    "relation": "abstracts_to",
+    "target": "state_group:wood_species_resource"
+  },
+  {
+    "source": "collect_dark_oak_log",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_collection"
+  },
+  {
+    "source": "craft_dark_oak_planks",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "craft_dark_oak_boat",
+    "relation": "abstracts_to",
+    "target": "task_group:wood_species_crafting"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_clay_ball"
+  },
+  {
+    "source": "collect_clay_ball",
+    "relation": "produces",
+    "target": "item:clay_ball"
+  },
+  {
+    "source": "item:clay_ball",
+    "relation": "abstracts_to",
+    "target": "state_group:natural_material"
+  },
+  {
+    "source": "collect_clay_ball",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_cactus"
+  },
+  {
+    "source": "collect_cactus",
+    "relation": "produces",
+    "target": "item:cactus"
+  },
+  {
+    "source": "item:cactus",
+    "relation": "abstracts_to",
+    "target": "state_group:natural_material"
+  },
+  {
+    "source": "collect_cactus",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_sugar_cane"
+  },
+  {
+    "source": "collect_sugar_cane",
+    "relation": "produces",
+    "target": "item:sugar_cane"
+  },
+  {
+    "source": "item:sugar_cane",
+    "relation": "abstracts_to",
+    "target": "state_group:natural_material"
+  },
+  {
+    "source": "collect_sugar_cane",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_apple"
+  },
+  {
+    "source": "collect_apple",
+    "relation": "produces",
+    "target": "item:apple"
+  },
+  {
+    "source": "item:apple",
+    "relation": "abstracts_to",
+    "target": "state_group:food_resource"
+  },
+  {
+    "source": "collect_apple",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_pumpkin"
+  },
+  {
+    "source": "collect_pumpkin",
+    "relation": "produces",
+    "target": "item:pumpkin"
+  },
+  {
+    "source": "item:pumpkin",
+    "relation": "abstracts_to",
+    "target": "state_group:food_resource"
+  },
+  {
+    "source": "collect_pumpkin",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_melon_slice"
+  },
+  {
+    "source": "collect_melon_slice",
+    "relation": "produces",
+    "target": "item:melon_slice"
+  },
+  {
+    "source": "item:melon_slice",
+    "relation": "abstracts_to",
+    "target": "state_group:food_resource"
+  },
+  {
+    "source": "collect_melon_slice",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_red_mushroom"
+  },
+  {
+    "source": "collect_red_mushroom",
+    "relation": "produces",
+    "target": "item:red_mushroom"
+  },
+  {
+    "source": "item:red_mushroom",
+    "relation": "abstracts_to",
+    "target": "state_group:food_resource"
+  },
+  {
+    "source": "collect_red_mushroom",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_brown_mushroom"
+  },
+  {
+    "source": "collect_brown_mushroom",
+    "relation": "produces",
+    "target": "item:brown_mushroom"
+  },
+  {
+    "source": "item:brown_mushroom",
+    "relation": "abstracts_to",
+    "target": "state_group:food_resource"
+  },
+  {
+    "source": "collect_brown_mushroom",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "tool:wooden_sword",
+    "relation": "requires",
+    "target": "collect_string"
+  },
+  {
+    "source": "tool:wooden_sword",
+    "relation": "enables",
+    "target": "collect_string"
+  },
+  {
+    "source": "collect_string",
+    "relation": "produces",
+    "target": "item:string"
+  },
+  {
+    "source": "item:string",
+    "relation": "abstracts_to",
+    "target": "state_group:combat_resource"
+  },
+  {
+    "source": "collect_string",
+    "relation": "abstracts_to",
+    "target": "task_group:combat_resource_collection"
+  },
+  {
+    "source": "tool:wooden_sword",
+    "relation": "requires",
+    "target": "collect_bone"
+  },
+  {
+    "source": "tool:wooden_sword",
+    "relation": "enables",
+    "target": "collect_bone"
+  },
+  {
+    "source": "collect_bone",
+    "relation": "produces",
+    "target": "item:bone"
+  },
+  {
+    "source": "item:bone",
+    "relation": "abstracts_to",
+    "target": "state_group:combat_resource"
+  },
+  {
+    "source": "collect_bone",
+    "relation": "abstracts_to",
+    "target": "task_group:combat_resource_collection"
+  },
+  {
+    "source": "tool:stone_pickaxe",
+    "relation": "requires",
+    "target": "collect_iron_ore"
+  },
+  {
+    "source": "tool:stone_pickaxe",
+    "relation": "enables",
+    "target": "collect_iron_ore"
+  },
+  {
+    "source": "collect_iron_ore",
+    "relation": "produces",
+    "target": "item:iron_ore"
+  },
+  {
+    "source": "item:iron_ore",
+    "relation": "abstracts_to",
+    "target": "state_group:ore_resource"
+  },
+  {
+    "source": "collect_iron_ore",
+    "relation": "abstracts_to",
+    "target": "task_group:ore_collection"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "requires",
+    "target": "collect_gold_ore"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "enables",
+    "target": "collect_gold_ore"
+  },
+  {
+    "source": "collect_gold_ore",
+    "relation": "produces",
+    "target": "item:gold_ore"
+  },
+  {
+    "source": "item:gold_ore",
+    "relation": "abstracts_to",
+    "target": "state_group:ore_resource"
+  },
+  {
+    "source": "collect_gold_ore",
+    "relation": "abstracts_to",
+    "target": "task_group:ore_collection"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "requires",
+    "target": "collect_redstone"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "enables",
+    "target": "collect_redstone"
+  },
+  {
+    "source": "collect_redstone",
+    "relation": "produces",
+    "target": "item:redstone"
+  },
+  {
+    "source": "item:redstone",
+    "relation": "abstracts_to",
+    "target": "state_group:ore_resource"
+  },
+  {
+    "source": "collect_redstone",
+    "relation": "abstracts_to",
+    "target": "task_group:ore_collection"
+  },
+  {
+    "source": "tool:stone_pickaxe",
+    "relation": "requires",
+    "target": "collect_lapis_lazuli"
+  },
+  {
+    "source": "tool:stone_pickaxe",
+    "relation": "enables",
+    "target": "collect_lapis_lazuli"
+  },
+  {
+    "source": "collect_lapis_lazuli",
+    "relation": "produces",
+    "target": "item:lapis_lazuli"
+  },
+  {
+    "source": "item:lapis_lazuli",
+    "relation": "abstracts_to",
+    "target": "state_group:gem_resource"
+  },
+  {
+    "source": "collect_lapis_lazuli",
+    "relation": "abstracts_to",
+    "target": "task_group:ore_collection"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "requires",
+    "target": "collect_diamond"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "enables",
+    "target": "collect_diamond"
+  },
+  {
+    "source": "collect_diamond",
+    "relation": "produces",
+    "target": "item:diamond"
+  },
+  {
+    "source": "item:diamond",
+    "relation": "abstracts_to",
+    "target": "state_group:gem_resource"
+  },
+  {
+    "source": "collect_diamond",
+    "relation": "abstracts_to",
+    "target": "task_group:ore_collection"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "requires",
+    "target": "collect_emerald"
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "enables",
+    "target": "collect_emerald"
+  },
+  {
+    "source": "collect_emerald",
+    "relation": "produces",
+    "target": "item:emerald"
+  },
+  {
+    "source": "item:emerald",
+    "relation": "abstracts_to",
+    "target": "state_group:gem_resource"
+  },
+  {
+    "source": "collect_emerald",
+    "relation": "abstracts_to",
+    "target": "task_group:ore_collection"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_bowl"
+  },
+  {
+    "source": "craft_bowl",
+    "relation": "produces",
+    "target": "item:bowl"
+  },
+  {
+    "source": "item:bowl",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_bowl",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_ladder"
+  },
+  {
+    "source": "craft_ladder",
+    "relation": "produces",
+    "target": "item:ladder"
+  },
+  {
+    "source": "item:ladder",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_ladder",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_oak_sign"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_oak_sign"
+  },
+  {
+    "source": "craft_oak_sign",
+    "relation": "produces",
+    "target": "item:oak_sign"
+  },
+  {
+    "source": "item:oak_sign",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_oak_sign",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_oak_fence"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_oak_fence"
+  },
+  {
+    "source": "craft_oak_fence",
+    "relation": "produces",
+    "target": "item:oak_fence"
+  },
+  {
+    "source": "item:oak_fence",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_oak_fence",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_oak_door"
+  },
+  {
+    "source": "craft_oak_door",
+    "relation": "produces",
+    "target": "item:oak_door"
+  },
+  {
+    "source": "item:oak_door",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_oak_door",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_oak_trapdoor"
+  },
+  {
+    "source": "craft_oak_trapdoor",
+    "relation": "produces",
+    "target": "item:oak_trapdoor"
+  },
+  {
+    "source": "item:oak_trapdoor",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_oak_trapdoor",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_oak_pressure_plate"
+  },
+  {
+    "source": "craft_oak_pressure_plate",
+    "relation": "produces",
+    "target": "item:oak_pressure_plate"
+  },
+  {
+    "source": "item:oak_pressure_plate",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_oak_pressure_plate",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "craft_stone_pickaxe",
+    "count": 3
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_stone_pickaxe",
+    "count": 2
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_stone_pickaxe"
+  },
+  {
+    "source": "craft_stone_pickaxe",
+    "relation": "produces",
+    "target": "tool:stone_pickaxe",
+    "count": 1
+  },
+  {
+    "source": "tool:stone_pickaxe",
+    "relation": "abstracts_to",
+    "target": "state_group:stone_tool"
+  },
+  {
+    "source": "craft_stone_pickaxe",
+    "relation": "abstracts_to",
+    "target": "task_group:stone_tool_crafting"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "craft_stone_axe"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_stone_axe"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_stone_axe"
+  },
+  {
+    "source": "craft_stone_axe",
+    "relation": "produces",
+    "target": "tool:stone_axe"
+  },
+  {
+    "source": "tool:stone_axe",
+    "relation": "abstracts_to",
+    "target": "state_group:stone_tool"
+  },
+  {
+    "source": "craft_stone_axe",
+    "relation": "abstracts_to",
+    "target": "task_group:stone_tool_crafting"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "craft_stone_shovel"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_stone_shovel"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_stone_shovel"
+  },
+  {
+    "source": "craft_stone_shovel",
+    "relation": "produces",
+    "target": "tool:stone_shovel"
+  },
+  {
+    "source": "tool:stone_shovel",
+    "relation": "abstracts_to",
+    "target": "state_group:stone_tool"
+  },
+  {
+    "source": "craft_stone_shovel",
+    "relation": "abstracts_to",
+    "target": "task_group:stone_tool_crafting"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "craft_stone_hoe"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_stone_hoe"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_stone_hoe"
+  },
+  {
+    "source": "craft_stone_hoe",
+    "relation": "produces",
+    "target": "tool:stone_hoe"
+  },
+  {
+    "source": "tool:stone_hoe",
+    "relation": "abstracts_to",
+    "target": "state_group:stone_tool"
+  },
+  {
+    "source": "craft_stone_hoe",
+    "relation": "abstracts_to",
+    "target": "task_group:stone_tool_crafting"
+  },
+  {
+    "source": "item:oak_log",
+    "relation": "requires",
+    "target": "smelt_charcoal"
+  },
+  {
+    "source": "item:furnace",
+    "relation": "requires",
+    "target": "smelt_charcoal"
+  },
+  {
+    "source": "smelt_charcoal",
+    "relation": "produces",
+    "target": "item:charcoal"
+  },
+  {
+    "source": "item:charcoal",
+    "relation": "abstracts_to",
+    "target": "state_group:smelted_material"
+  },
+  {
+    "source": "smelt_charcoal",
+    "relation": "abstracts_to",
+    "target": "task_group:smelting"
+  },
+  {
+    "source": "item:cobblestone",
+    "relation": "requires",
+    "target": "smelt_stone"
+  },
+  {
+    "source": "item:furnace",
+    "relation": "requires",
+    "target": "smelt_stone"
+  },
+  {
+    "source": "item:coal",
+    "relation": "requires",
+    "target": "smelt_stone"
+  },
+  {
+    "source": "smelt_stone",
+    "relation": "produces",
+    "target": "item:stone"
+  },
+  {
+    "source": "item:stone",
+    "relation": "abstracts_to",
+    "target": "state_group:smelted_material"
+  },
+  {
+    "source": "smelt_stone",
+    "relation": "abstracts_to",
+    "target": "task_group:smelting"
+  },
+  {
+    "source": "item:sand",
+    "relation": "requires",
+    "target": "smelt_glass"
+  },
+  {
+    "source": "item:furnace",
+    "relation": "requires",
+    "target": "smelt_glass"
+  },
+  {
+    "source": "item:coal",
+    "relation": "requires",
+    "target": "smelt_glass"
+  },
+  {
+    "source": "smelt_glass",
+    "relation": "produces",
+    "target": "item:glass"
+  },
+  {
+    "source": "item:glass",
+    "relation": "abstracts_to",
+    "target": "state_group:smelted_material"
+  },
+  {
+    "source": "smelt_glass",
+    "relation": "abstracts_to",
+    "target": "task_group:smelting"
+  },
+  {
+    "source": "item:gold_ore",
+    "relation": "requires",
+    "target": "smelt_gold_ingot"
+  },
+  {
+    "source": "item:furnace",
+    "relation": "requires",
+    "target": "smelt_gold_ingot"
+  },
+  {
+    "source": "item:coal",
+    "relation": "requires",
+    "target": "smelt_gold_ingot"
+  },
+  {
+    "source": "smelt_gold_ingot",
+    "relation": "produces",
+    "target": "item:gold_ingot"
+  },
+  {
+    "source": "item:gold_ingot",
+    "relation": "abstracts_to",
+    "target": "state_group:smelted_material"
+  },
+  {
+    "source": "smelt_gold_ingot",
+    "relation": "abstracts_to",
+    "target": "task_group:smelting"
+  },
+  {
+    "source": "item:iron_ingot",
+    "relation": "requires",
+    "target": "craft_iron_pickaxe",
+    "count": 3
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_iron_pickaxe",
+    "count": 2
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_iron_pickaxe"
+  },
+  {
+    "source": "craft_iron_pickaxe",
+    "relation": "produces",
+    "target": "tool:iron_pickaxe",
+    "count": 1
+  },
+  {
+    "source": "tool:iron_pickaxe",
+    "relation": "abstracts_to",
+    "target": "state_group:iron_tool"
+  },
+  {
+    "source": "craft_iron_pickaxe",
+    "relation": "abstracts_to",
+    "target": "task_group:iron_tool_crafting"
+  },
+  {
+    "source": "smelt_charcoal",
+    "relation": "consumes",
+    "target": "item:oak_log"
+  },
+  {
+    "source": "smelt_stone",
+    "relation": "consumes",
+    "target": "item:cobblestone"
+  },
+  {
+    "source": "smelt_glass",
+    "relation": "consumes",
+    "target": "item:sand"
+  },
+  {
+    "source": "smelt_gold_ingot",
+    "relation": "consumes",
+    "target": "item:gold_ore"
+  },
+  {
+    "source": "craft_iron_pickaxe",
+    "relation": "consumes",
+    "target": "item:iron_ingot",
+    "count": 3
+  },
+  {
+    "source": "environment:spawned_world",
+    "relation": "requires",
+    "target": "collect_white_wool"
+  },
+  {
+    "source": "collect_white_wool",
+    "relation": "produces",
+    "target": "item:white_wool"
+  },
+  {
+    "source": "item:white_wool",
+    "relation": "abstracts_to",
+    "target": "state_group:natural_material"
+  },
+  {
+    "source": "collect_white_wool",
+    "relation": "abstracts_to",
+    "target": "task_group:natural_material_collection"
+  },
+  {
+    "source": "item:white_wool",
+    "relation": "requires",
+    "target": "craft_white_bed"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_white_bed"
+  },
+  {
+    "source": "craft_white_bed",
+    "relation": "produces",
+    "target": "item:white_bed"
+  },
+  {
+    "source": "item:white_bed",
+    "relation": "abstracts_to",
+    "target": "state_group:defense_utility"
+  },
+  {
+    "source": "craft_white_bed",
+    "relation": "abstracts_to",
+    "target": "task_group:defense_utility_crafting"
+  },
+  {
+    "source": "item:string",
+    "relation": "requires",
+    "target": "craft_bow"
+  },
+  {
+    "source": "item:stick",
+    "relation": "requires",
+    "target": "craft_bow"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_bow"
+  },
+  {
+    "source": "craft_bow",
+    "relation": "produces",
+    "target": "tool:bow"
+  },
+  {
+    "source": "tool:bow",
+    "relation": "abstracts_to",
+    "target": "state_group:defense_utility"
+  },
+  {
+    "source": "craft_bow",
+    "relation": "abstracts_to",
+    "target": "task_group:defense_utility_crafting"
+  },
+  {
+    "source": "tool:bow",
+    "relation": "enables",
+    "target": "defeat_zombie"
+  },
+  {
+    "source": "item:iron_ingot",
+    "relation": "requires",
+    "target": "craft_shield"
+  },
+  {
+    "source": "item:oak_planks",
+    "relation": "requires",
+    "target": "craft_shield"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_shield"
+  },
+  {
+    "source": "craft_shield",
+    "relation": "produces",
+    "target": "item:shield"
+  },
+  {
+    "source": "item:shield",
+    "relation": "abstracts_to",
+    "target": "state_group:defense_utility"
+  },
+  {
+    "source": "craft_shield",
+    "relation": "abstracts_to",
+    "target": "task_group:defense_utility_crafting"
+  },
+  {
+    "source": "item:shield",
+    "relation": "enables",
+    "target": "survive_first_night"
+  },
+  {
+    "source": "item:iron_ingot",
+    "relation": "requires",
+    "target": "craft_bucket"
+  },
+  {
+    "source": "item:crafting_table",
+    "relation": "requires",
+    "target": "craft_bucket"
+  },
+  {
+    "source": "craft_bucket",
+    "relation": "produces",
+    "target": "item:bucket"
+  },
+  {
+    "source": "item:bucket",
+    "relation": "abstracts_to",
+    "target": "state_group:utility_item"
+  },
+  {
+    "source": "craft_bucket",
+    "relation": "abstracts_to",
+    "target": "task_group:utility_crafting"
+  },
+  {
+    "source": "item:bucket",
+    "relation": "requires",
+    "target": "collect_water_bucket"
+  },
+  {
+    "source": "collect_water_bucket",
+    "relation": "produces",
+    "target": "item:water_bucket"
+  },
+  {
+    "source": "item:water_bucket",
+    "relation": "abstracts_to",
+    "target": "state_group:defense_utility"
+  },
+  {
+    "source": "collect_water_bucket",
+    "relation": "abstracts_to",
+    "target": "task_group:defense_utility_crafting"
+  },
+  {
+    "source": "item:water_bucket",
+    "relation": "enables",
+    "target": "survive_first_night"
+  }
+]

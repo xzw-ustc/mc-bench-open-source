@@ -1,0 +1,508 @@
+[
+  {
+    "id": "cross_domain_safe_night",
+    "name": "Cross-Domain Safe Night",
+    "kind": "cross_domain",
+    "task_ids": [
+      "scout_coal_source",
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "collect_coal",
+      "craft_torch",
+      "build_lit_shelter",
+      "survive_first_night"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "exploration",
+      "survival",
+      "building"
+    ],
+    "difficulty": "standard",
+    "environment_profile": "forest_progression"
+  },
+  {
+    "id": "combat_readiness",
+    "name": "Combat Readiness",
+    "kind": "cross_domain",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "mine_cobblestone",
+      "craft_stone_sword",
+      "defeat_zombie"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building",
+      "combat"
+    ],
+    "difficulty": "standard",
+    "environment_profile": "forest_progression"
+  },
+  {
+    "id": "full_mixed_progression",
+    "name": "Full Mixed Progression",
+    "kind": "cross_domain",
+    "task_ids": [
+      "scout_coal_source",
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "collect_coal",
+      "craft_torch",
+      "build_lit_shelter",
+      "survive_first_night",
+      "mine_cobblestone",
+      "craft_stone_sword",
+      "defeat_zombie"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "exploration",
+      "survival",
+      "building",
+      "combat"
+    ],
+    "difficulty": "standard",
+    "environment_profile": "forest_progression"
+  },
+  {
+    "id": "collect_log_smoke",
+    "name": "Collect Log Smoke",
+    "kind": "smoke",
+    "task_ids": [
+      "collect_log"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival"
+    ],
+    "difficulty": "smoke",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "wooden_tools_smoke",
+    "name": "Wooden Tools Smoke",
+    "kind": "smoke",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "smoke",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "coal_smoke",
+    "name": "Coal Smoke",
+    "kind": "smoke",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "scout_coal_source",
+      "collect_coal"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "exploration",
+      "survival",
+      "building"
+    ],
+    "difficulty": "smoke",
+    "environment_profile": "fixed_coal_shaft",
+    "profile_policy": "chain"
+  },
+  {
+    "id": "night_combat_probe",
+    "name": "Night Combat Probe",
+    "kind": "probe",
+    "task_ids": [
+      "survive_first_night",
+      "defeat_zombie"
+    ],
+    "initial_states": [
+      "environment:spawned_world",
+      "structure:lit_shelter",
+      "tool:stone_sword"
+    ],
+    "domains": [
+      "survival",
+      "combat"
+    ],
+    "difficulty": "probe",
+    "environment_profile": "forest_night"
+  },
+  {
+    "id": "basic_resource_sampler",
+    "name": "Basic Resource Sampler",
+    "kind": "horizontal",
+    "task_ids": [
+      "collect_dirt",
+      "collect_sand",
+      "collect_gravel",
+      "collect_flint",
+      "collect_seeds",
+      "collect_flower"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "exploration"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "wood_crafting_basics",
+    "name": "Wood Crafting Basics",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "stone_crafting_basics",
+    "name": "Stone Crafting Basics",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "mine_cobblestone",
+      "craft_furnace"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "wood_species_collection",
+    "name": "Wood Species Collection",
+    "kind": "horizontal",
+    "task_ids": [
+      "collect_birch_log",
+      "collect_spruce_log",
+      "collect_jungle_log",
+      "collect_acacia_log",
+      "collect_dark_oak_log"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "wood_species_crafting",
+    "name": "Wood Species Crafting",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_birch_log",
+      "craft_birch_planks",
+      "craft_birch_boat",
+      "collect_spruce_log",
+      "craft_spruce_planks",
+      "craft_spruce_boat",
+      "collect_jungle_log",
+      "craft_jungle_planks",
+      "craft_jungle_boat",
+      "collect_acacia_log",
+      "craft_acacia_planks",
+      "craft_acacia_boat",
+      "collect_dark_oak_log",
+      "craft_dark_oak_planks",
+      "craft_dark_oak_boat"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "standard",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "natural_material_sampler",
+    "name": "Natural Material Sampler",
+    "kind": "horizontal",
+    "task_ids": [
+      "collect_clay_ball",
+      "collect_cactus",
+      "collect_sugar_cane",
+      "collect_apple",
+      "collect_pumpkin",
+      "collect_melon_slice",
+      "collect_red_mushroom",
+      "collect_brown_mushroom"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "exploration"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "survival_utility_suite",
+    "name": "Survival Utility Suite",
+    "kind": "cross_domain",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_sword",
+      "collect_string",
+      "craft_bow",
+      "collect_bone",
+      "collect_white_wool",
+      "collect_log",
+      "craft_planks",
+      "craft_white_bed",
+      "craft_wooden_pickaxe",
+      "mine_cobblestone",
+      "craft_furnace",
+      "scout_coal_source",
+      "collect_coal",
+      "collect_iron_ore_basic",
+      "smelt_iron_ingot",
+      "collect_log",
+      "craft_planks",
+      "craft_shield",
+      "craft_bucket",
+      "collect_water_bucket"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building",
+      "combat"
+    ],
+    "difficulty": "standard",
+    "environment_profile": "forest_progression"
+  },
+  {
+    "id": "oak_utility_crafting",
+    "name": "Oak Utility Crafting",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_bowl",
+      "craft_ladder",
+      "craft_oak_sign",
+      "craft_oak_fence",
+      "craft_oak_door",
+      "craft_oak_trapdoor",
+      "craft_oak_pressure_plate"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "stone_tool_suite",
+    "name": "Stone Tool Suite",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "mine_cobblestone",
+      "craft_stone_pickaxe",
+      "craft_stone_axe",
+      "craft_stone_shovel",
+      "craft_stone_hoe"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "standard",
+    "environment_profile": "forest_day"
+  },
+  {
+    "id": "ore_mining_progression",
+    "name": "Ore Mining Progression",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "mine_cobblestone",
+      "craft_stone_pickaxe",
+      "craft_furnace",
+      "scout_coal_source",
+      "collect_coal",
+      "collect_iron_ore_basic",
+      "smelt_iron_ingot",
+      "craft_iron_pickaxe",
+      "collect_iron_ore",
+      "collect_gold_ore",
+      "collect_redstone",
+      "collect_lapis_lazuli",
+      "collect_diamond",
+      "collect_emerald"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building",
+      "exploration"
+    ],
+    "difficulty": "advanced",
+    "environment_profile": "fixed_ore_progression_shaft",
+    "profile_policy": "chain"
+  },
+  {
+    "id": "smelting_transformations",
+    "name": "Smelting Transformations",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_pickaxe",
+      "mine_cobblestone",
+      "craft_furnace",
+      "scout_coal_source",
+      "collect_coal",
+      "collect_sand",
+      "collect_log",
+      "smelt_charcoal",
+      "mine_cobblestone",
+      "smelt_stone",
+      "smelt_glass",
+      "collect_iron_ore_basic",
+      "smelt_iron_ingot",
+      "craft_iron_pickaxe",
+      "collect_gold_ore",
+      "collect_coal",
+      "smelt_gold_ingot"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building",
+      "exploration"
+    ],
+    "difficulty": "advanced",
+    "environment_profile": "fixed_ore_progression_shaft",
+    "profile_policy": "chain"
+  },
+  {
+    "id": "wooden_utility_tool_suite",
+    "name": "Wooden Utility Tool Suite",
+    "kind": "vertical",
+    "task_ids": [
+      "collect_log",
+      "craft_planks",
+      "craft_chest",
+      "collect_log",
+      "craft_planks",
+      "craft_oak_boat",
+      "collect_log",
+      "craft_planks",
+      "craft_sticks",
+      "craft_table",
+      "craft_wooden_axe",
+      "collect_log",
+      "craft_planks",
+      "craft_wooden_shovel"
+    ],
+    "initial_states": [
+      "environment:spawned_world"
+    ],
+    "domains": [
+      "survival",
+      "building"
+    ],
+    "difficulty": "basic",
+    "environment_profile": "forest_day"
+  }
+]

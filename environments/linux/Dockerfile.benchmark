@@ -1,0 +1,9 @@
+FROM python:3.10.19-slim
+ARG PIP_INDEX_URL=https://pypi.org/simple
+WORKDIR /workspace/mc-bench
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+COPY requirements-test.txt .
+RUN python -m pip install --no-cache-dir 'setuptools==65.5.0' 'wheel==0.38.4' -r requirements-test.txt
+COPY . .
+RUN python -m pip install --no-build-isolation --no-deps -e .
+CMD ["python", "-m", "mcbench.cli", "benchmark", "benchmarks/v1", "--output-dir", "runs/catalog-smoke"]

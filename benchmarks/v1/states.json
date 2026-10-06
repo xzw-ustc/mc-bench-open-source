@@ -1,0 +1,557 @@
+[
+  {
+    "id": "environment:spawned_world",
+    "kind": "environment",
+    "description": "The chain begins in a fresh Minecraft world."
+  },
+  {
+    "id": "location:coal_source_known",
+    "kind": "location",
+    "description": "The agent has discovered a coal source."
+  },
+  {
+    "id": "item:oak_log",
+    "kind": "item",
+    "description": "The agent holds at least one oak log."
+  },
+  {
+    "id": "item:oak_planks",
+    "kind": "item",
+    "description": "The agent holds at least four oak planks."
+  },
+  {
+    "id": "item:crafting_table",
+    "kind": "item",
+    "description": "The agent holds at least one crafting table."
+  },
+  {
+    "id": "tool:wooden_pickaxe",
+    "kind": "tool",
+    "description": "The agent has crafted a wooden pickaxe."
+  },
+  {
+    "id": "item:coal",
+    "kind": "item",
+    "description": "The agent holds at least one coal."
+  },
+  {
+    "id": "item:torch",
+    "kind": "item",
+    "description": "The agent holds at least one torch."
+  },
+  {
+    "id": "structure:lit_shelter",
+    "kind": "structure",
+    "description": "A minimally enclosed and lit shelter has been built."
+  },
+  {
+    "id": "player:night_survived",
+    "kind": "player",
+    "description": "The player has survived the target night interval."
+  },
+  {
+    "id": "item:cobblestone",
+    "kind": "item",
+    "description": "The agent holds enough cobblestone to craft a stone sword."
+  },
+  {
+    "id": "tool:stone_sword",
+    "kind": "tool",
+    "description": "The agent has crafted a stone sword."
+  },
+  {
+    "id": "entity:zombie_defeated",
+    "kind": "entity",
+    "description": "At least one zombie has been defeated."
+  },
+  {
+    "id": "item:dirt",
+    "kind": "item",
+    "description": "The agent holds at least one dirt block."
+  },
+  {
+    "id": "item:sand",
+    "kind": "item",
+    "description": "The agent holds at least one sand block."
+  },
+  {
+    "id": "item:gravel",
+    "kind": "item",
+    "description": "The agent holds at least one gravel block."
+  },
+  {
+    "id": "item:flint",
+    "kind": "item",
+    "description": "The agent holds at least one flint."
+  },
+  {
+    "id": "item:wheat_seeds",
+    "kind": "item",
+    "description": "The agent holds at least one wheat seed."
+  },
+  {
+    "id": "item:poppy",
+    "kind": "item",
+    "description": "The agent holds at least one poppy or comparable red flower."
+  },
+  {
+    "id": "item:stick",
+    "kind": "item",
+    "description": "The agent holds sticks for basic crafting."
+  },
+  {
+    "id": "item:chest",
+    "kind": "item",
+    "description": "The agent holds at least one chest."
+  },
+  {
+    "id": "item:oak_boat",
+    "kind": "item",
+    "description": "The agent holds at least one oak boat."
+  },
+  {
+    "id": "item:furnace",
+    "kind": "item",
+    "description": "The agent holds at least one furnace."
+  },
+  {
+    "id": "item:iron_ingot",
+    "kind": "item",
+    "description": "The agent holds at least one iron ingot."
+  },
+  {
+    "id": "tool:wooden_axe",
+    "kind": "tool",
+    "description": "The agent has crafted a wooden axe."
+  },
+  {
+    "id": "tool:wooden_sword",
+    "kind": "tool",
+    "description": "The agent has crafted a wooden sword."
+  },
+  {
+    "id": "tool:wooden_shovel",
+    "kind": "tool",
+    "description": "The agent has crafted a wooden shovel."
+  },
+  {
+    "id": "environment:lit_area",
+    "kind": "environment",
+    "description": "The local area has a usable light source."
+  },
+  {
+    "id": "state_group:wood_resource",
+    "kind": "state_group",
+    "description": "Abstract group for wood-derived inventory resources."
+  },
+  {
+    "id": "state_group:basic_block_resource",
+    "kind": "state_group",
+    "description": "Abstract group for easy-to-gather block resources."
+  },
+  {
+    "id": "state_group:stone_resource",
+    "kind": "state_group",
+    "description": "Abstract group for stone-tier resources."
+  },
+  {
+    "id": "state_group:light_resource",
+    "kind": "state_group",
+    "description": "Abstract group for resources that support lighting."
+  },
+  {
+    "id": "task_group:basic_resource_collection",
+    "kind": "task_group",
+    "description": "Abstract task group for low-level resource collection."
+  },
+  {
+    "id": "task_group:obtain_wood",
+    "kind": "task_group",
+    "description": "Abstract task group for obtaining wood."
+  },
+  {
+    "id": "task_group:basic_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for early crafting operations."
+  },
+  {
+    "id": "task_group:wooden_tool_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for wooden tool crafting."
+  },
+  {
+    "id": "task_group:stone_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for stone-tier crafting."
+  },
+  {
+    "id": "state_group:wood_species_resource",
+    "kind": "state_group",
+    "description": "Abstract group for non-oak wood resources and planks."
+  },
+  {
+    "id": "state_group:natural_material",
+    "kind": "state_group",
+    "description": "Abstract group for naturally gathered overworld materials."
+  },
+  {
+    "id": "state_group:food_resource",
+    "kind": "state_group",
+    "description": "Abstract group for edible or cookable food resources."
+  },
+  {
+    "id": "state_group:combat_resource",
+    "kind": "state_group",
+    "description": "Abstract group for combat-relevant resources such as string and bone."
+  },
+  {
+    "id": "state_group:ore_resource",
+    "kind": "state_group",
+    "description": "Abstract group for mineable ore resources."
+  },
+  {
+    "id": "state_group:gem_resource",
+    "kind": "state_group",
+    "description": "Abstract group for valuable mined gem resources."
+  },
+  {
+    "id": "state_group:utility_item",
+    "kind": "state_group",
+    "description": "Abstract group for utility crafted items."
+  },
+  {
+    "id": "state_group:stone_tool",
+    "kind": "state_group",
+    "description": "Abstract group for stone-tier tools."
+  },
+  {
+    "id": "state_group:smelted_material",
+    "kind": "state_group",
+    "description": "Abstract group for furnace-produced materials."
+  },
+  {
+    "id": "state_group:iron_tool",
+    "kind": "state_group",
+    "description": "Abstract group for iron-tier tools."
+  },
+  {
+    "id": "task_group:wood_species_collection",
+    "kind": "task_group",
+    "description": "Abstract task group for gathering multiple wood species."
+  },
+  {
+    "id": "task_group:wood_species_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for crafting with multiple wood species."
+  },
+  {
+    "id": "task_group:natural_material_collection",
+    "kind": "task_group",
+    "description": "Abstract task group for gathering natural overworld materials."
+  },
+  {
+    "id": "task_group:combat_resource_collection",
+    "kind": "task_group",
+    "description": "Abstract task group for obtaining combat-relevant resources."
+  },
+  {
+    "id": "task_group:ore_collection",
+    "kind": "task_group",
+    "description": "Abstract task group for mining ore and gem resources."
+  },
+  {
+    "id": "task_group:utility_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for utility crafting recipes."
+  },
+  {
+    "id": "task_group:stone_tool_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for stone-tier tool crafting."
+  },
+  {
+    "id": "task_group:smelting",
+    "kind": "task_group",
+    "description": "Abstract task group for furnace transformations."
+  },
+  {
+    "id": "task_group:iron_tool_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for iron-tier tool crafting."
+  },
+  {
+    "id": "item:birch_log",
+    "kind": "item",
+    "description": "The agent holds at least one birch log."
+  },
+  {
+    "id": "item:birch_planks",
+    "kind": "item",
+    "description": "The agent holds at least one birch planks."
+  },
+  {
+    "id": "item:birch_boat",
+    "kind": "item",
+    "description": "The agent holds at least one birch boat."
+  },
+  {
+    "id": "item:spruce_log",
+    "kind": "item",
+    "description": "The agent holds at least one spruce log."
+  },
+  {
+    "id": "item:spruce_planks",
+    "kind": "item",
+    "description": "The agent holds at least one spruce planks."
+  },
+  {
+    "id": "item:spruce_boat",
+    "kind": "item",
+    "description": "The agent holds at least one spruce boat."
+  },
+  {
+    "id": "item:jungle_log",
+    "kind": "item",
+    "description": "The agent holds at least one jungle log."
+  },
+  {
+    "id": "item:jungle_planks",
+    "kind": "item",
+    "description": "The agent holds at least one jungle planks."
+  },
+  {
+    "id": "item:jungle_boat",
+    "kind": "item",
+    "description": "The agent holds at least one jungle boat."
+  },
+  {
+    "id": "item:acacia_log",
+    "kind": "item",
+    "description": "The agent holds at least one acacia log."
+  },
+  {
+    "id": "item:acacia_planks",
+    "kind": "item",
+    "description": "The agent holds at least one acacia planks."
+  },
+  {
+    "id": "item:acacia_boat",
+    "kind": "item",
+    "description": "The agent holds at least one acacia boat."
+  },
+  {
+    "id": "item:dark_oak_log",
+    "kind": "item",
+    "description": "The agent holds at least one dark oak log."
+  },
+  {
+    "id": "item:dark_oak_planks",
+    "kind": "item",
+    "description": "The agent holds at least one dark oak planks."
+  },
+  {
+    "id": "item:dark_oak_boat",
+    "kind": "item",
+    "description": "The agent holds at least one dark oak boat."
+  },
+  {
+    "id": "item:bowl",
+    "kind": "item",
+    "description": "The agent holds at least one bowl."
+  },
+  {
+    "id": "item:ladder",
+    "kind": "item",
+    "description": "The agent holds at least one ladder."
+  },
+  {
+    "id": "item:oak_sign",
+    "kind": "item",
+    "description": "The agent holds at least one oak sign."
+  },
+  {
+    "id": "item:oak_fence",
+    "kind": "item",
+    "description": "The agent holds at least one oak fence."
+  },
+  {
+    "id": "item:oak_door",
+    "kind": "item",
+    "description": "The agent holds at least one oak door."
+  },
+  {
+    "id": "item:oak_trapdoor",
+    "kind": "item",
+    "description": "The agent holds at least one oak trapdoor."
+  },
+  {
+    "id": "item:oak_pressure_plate",
+    "kind": "item",
+    "description": "The agent holds at least one oak pressure plate."
+  },
+  {
+    "id": "item:apple",
+    "kind": "item",
+    "description": "The agent holds at least one apple."
+  },
+  {
+    "id": "item:bone",
+    "kind": "item",
+    "description": "The agent holds at least one bone."
+  },
+  {
+    "id": "item:brown_mushroom",
+    "kind": "item",
+    "description": "The agent holds at least one brown mushroom."
+  },
+  {
+    "id": "item:cactus",
+    "kind": "item",
+    "description": "The agent holds at least one cactus."
+  },
+  {
+    "id": "item:charcoal",
+    "kind": "item",
+    "description": "The agent holds at least one charcoal."
+  },
+  {
+    "id": "item:clay_ball",
+    "kind": "item",
+    "description": "The agent holds at least one clay ball."
+  },
+  {
+    "id": "item:diamond",
+    "kind": "item",
+    "description": "The agent holds at least one diamond."
+  },
+  {
+    "id": "item:emerald",
+    "kind": "item",
+    "description": "The agent holds at least one emerald."
+  },
+  {
+    "id": "item:glass",
+    "kind": "item",
+    "description": "The agent holds at least one glass."
+  },
+  {
+    "id": "item:gold_ingot",
+    "kind": "item",
+    "description": "The agent holds at least one gold ingot."
+  },
+  {
+    "id": "item:gold_ore",
+    "kind": "item",
+    "description": "The agent holds at least one gold ore."
+  },
+  {
+    "id": "item:iron_ore",
+    "kind": "item",
+    "description": "The agent holds at least one iron ore."
+  },
+  {
+    "id": "item:lapis_lazuli",
+    "kind": "item",
+    "description": "The agent holds at least one lapis lazuli."
+  },
+  {
+    "id": "item:melon_slice",
+    "kind": "item",
+    "description": "The agent holds at least one melon slice."
+  },
+  {
+    "id": "item:pumpkin",
+    "kind": "item",
+    "description": "The agent holds at least one pumpkin."
+  },
+  {
+    "id": "item:red_mushroom",
+    "kind": "item",
+    "description": "The agent holds at least one red mushroom."
+  },
+  {
+    "id": "item:redstone",
+    "kind": "item",
+    "description": "The agent holds at least one redstone."
+  },
+  {
+    "id": "item:stone",
+    "kind": "item",
+    "description": "The agent holds at least one stone."
+  },
+  {
+    "id": "item:string",
+    "kind": "item",
+    "description": "The agent holds at least one string."
+  },
+  {
+    "id": "item:sugar_cane",
+    "kind": "item",
+    "description": "The agent holds at least one sugar cane."
+  },
+  {
+    "id": "tool:iron_pickaxe",
+    "kind": "tool",
+    "description": "The agent has crafted or equipped a iron pickaxe."
+  },
+  {
+    "id": "tool:stone_axe",
+    "kind": "tool",
+    "description": "The agent has crafted or equipped a stone axe."
+  },
+  {
+    "id": "tool:stone_hoe",
+    "kind": "tool",
+    "description": "The agent has crafted or equipped a stone hoe."
+  },
+  {
+    "id": "tool:stone_pickaxe",
+    "kind": "tool",
+    "description": "The agent has crafted or equipped a stone pickaxe."
+  },
+  {
+    "id": "tool:stone_shovel",
+    "kind": "tool",
+    "description": "The agent has crafted or equipped a stone shovel."
+  },
+  {
+    "id": "item:white_wool",
+    "kind": "item",
+    "description": "The agent holds at least one white wool block."
+  },
+  {
+    "id": "item:white_bed",
+    "kind": "item",
+    "description": "The agent holds at least one white bed."
+  },
+  {
+    "id": "tool:bow",
+    "kind": "tool",
+    "description": "The agent has crafted a bow for ranged combat."
+  },
+  {
+    "id": "item:shield",
+    "kind": "item",
+    "description": "The agent holds at least one shield."
+  },
+  {
+    "id": "item:bucket",
+    "kind": "item",
+    "description": "The agent holds at least one bucket."
+  },
+  {
+    "id": "item:water_bucket",
+    "kind": "item",
+    "description": "The agent holds at least one water bucket."
+  },
+  {
+    "id": "state_group:defense_utility",
+    "kind": "state_group",
+    "description": "Abstract group for defensive and safety utility items."
+  },
+  {
+    "id": "task_group:defense_utility_crafting",
+    "kind": "task_group",
+    "description": "Abstract task group for defensive and safety utility crafting."
+  }
+]

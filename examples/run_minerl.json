@@ -1,0 +1,9 @@
+{
+  "catalog_dir": "benchmarks/v1",
+  "chain_id": "collect_log_smoke",
+  "environment_profile": "forest_day",
+  "environment": {"kind": "minerl"},
+  "agent": {"kind": "scripted", "action": {"__adapter_action__": "noop"}},
+  "max_stage_steps": 5,
+  "output_path": "runs/minerl.json"
+}

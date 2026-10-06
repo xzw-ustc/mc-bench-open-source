@@ -1,0 +1,855 @@
+[
+  {
+    "id": "forest_progression",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 42,
+    "day_phase": "progression",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_time": true,
+      "purpose": "Shared execution profile with full inventory and event observations."
+    }
+  },
+  {
+    "id": "forest_day",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 7,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "purpose": "Daylight profile for acquisition and crafting stages with full inventory observations."
+    }
+  },
+  {
+    "id": "forest_night",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 11,
+    "day_phase": "night",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 14000,
+      "allow_spawning": true,
+      "purpose": "Night profile for survival and combat stages with entity kill observations."
+    }
+  },
+  {
+    "id": "forest_dusk",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 9,
+    "day_phase": "dusk",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 12000,
+      "purpose": "Transition profile for shelter-building stages before night survival."
+    }
+  },
+  {
+    "id": "fixed_coal_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"799\" y1=\"72\" z1=\"-345\" x2=\"805\" y2=\"76\" z2=\"-337\" type=\"air\"/><DrawBlock x=\"801\" y=\"73\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"802\" y=\"73\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"803\" y=\"73\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"801\" y=\"74\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"802\" y=\"74\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"803\" y=\"74\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"801\" y=\"73\" z=\"-339\" type=\"coal_ore\"/><DrawBlock x=\"802\" y=\"73\" z=\"-339\" type=\"coal_ore\"/><DrawBlock x=\"803\" y=\"73\" z=\"-339\" type=\"coal_ore\"/><DrawBlock x=\"801\" y=\"74\" z=\"-339\" type=\"coal_ore\"/><DrawBlock x=\"802\" y=\"74\" z=\"-339\" type=\"coal_ore\"/><DrawBlock x=\"803\" y=\"74\" z=\"-339\" type=\"coal_ore\"/><DrawBlock x=\"799\" y=\"73\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"799\" y=\"73\" z=\"-342\" type=\"coal_ore\"/><DrawBlock x=\"799\" y=\"73\" z=\"-341\" type=\"coal_ore\"/><DrawBlock x=\"799\" y=\"74\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"799\" y=\"74\" z=\"-342\" type=\"coal_ore\"/><DrawBlock x=\"799\" y=\"74\" z=\"-341\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"73\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"73\" z=\"-342\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"73\" z=\"-341\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"74\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"74\" z=\"-342\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"74\" z=\"-341\" type=\"coal_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "coal_ore",
+          "x": 801,
+          "y": 73,
+          "z": -343
+        },
+        {
+          "type": "coal_ore",
+          "x": 802,
+          "y": 73,
+          "z": -343
+        },
+        {
+          "type": "coal_ore",
+          "x": 803,
+          "y": 73,
+          "z": -343
+        },
+        {
+          "type": "coal_ore",
+          "x": 801,
+          "y": 73,
+          "z": -339
+        },
+        {
+          "type": "coal_ore",
+          "x": 802,
+          "y": 73,
+          "z": -339
+        },
+        {
+          "type": "coal_ore",
+          "x": 803,
+          "y": 73,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "coal_ore",
+          "purpose": "Make coal discovery and coal collection reproducible without granting coal to the agent.",
+          "placement": {
+            "type": "exposed_pocket",
+            "y_band": [
+              73,
+              74
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "start_position"
+          },
+          "allowed_for": [
+            "scout_coal_source",
+            "collect_coal",
+            "craft_torch"
+          ],
+          "success_still_requires": [
+            "native observation or inventory evidence from real interaction"
+          ]
+        }
+      ],
+      "purpose": "Deterministic exposed coal pocket near the seed-21 spawn for coal observation and mining tests. MineRL 1.16 keeps the fixed yaw/pitch placement but derives x/z from the seeded world spawn.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_iron_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-339\" type=\"iron_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-339\" type=\"iron_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-339\" type=\"iron_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-342\" type=\"iron_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-341\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-342\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-341\" type=\"iron_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-339\" type=\"iron_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-339\" type=\"iron_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-339\" type=\"iron_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-342\" type=\"iron_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-341\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-342\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-341\" type=\"iron_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "iron_ore",
+          "x": 801,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "iron_ore",
+          "x": 802,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "iron_ore",
+          "x": 803,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "iron_ore",
+          "x": 801,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "iron_ore",
+          "x": 802,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "iron_ore",
+          "x": 803,
+          "y": 70,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "iron_ore",
+          "purpose": "Make iron_ore available in a fixed underground pocket within two vertical blocks of the actual spawn without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_controlled_pocket",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_iron_ore_basic",
+            "collect_iron_ore"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground iron ore pocket for reproducible early mining probes. The MineRL HumanSurvival runtime keeps the actual spawn at y=72, so V1 places the pocket at y=70..71 for reset-probe-verifiable underground access.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_gold_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-339\" type=\"gold_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-339\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-339\" type=\"gold_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-342\" type=\"gold_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-341\" type=\"gold_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-342\" type=\"gold_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-341\" type=\"gold_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-339\" type=\"gold_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-339\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-339\" type=\"gold_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-342\" type=\"gold_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-341\" type=\"gold_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-342\" type=\"gold_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-341\" type=\"gold_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "gold_ore",
+          "x": 801,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "gold_ore",
+          "x": 802,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "gold_ore",
+          "x": 803,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "gold_ore",
+          "x": 801,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "gold_ore",
+          "x": 802,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "gold_ore",
+          "x": 803,
+          "y": 70,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "gold_ore",
+          "purpose": "Make gold_ore available in a fixed underground pocket within two vertical blocks of the actual spawn without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_controlled_pocket",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_gold_ore"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground gold ore pocket for reproducible iron-pickaxe resource probes. The MineRL HumanSurvival runtime keeps the actual spawn at y=72, so V1 places the pocket at y=70..71 for reset-probe-verifiable underground access.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_redstone_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-339\" type=\"redstone_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-339\" type=\"redstone_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-339\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-342\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-341\" type=\"redstone_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-342\" type=\"redstone_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-341\" type=\"redstone_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-339\" type=\"redstone_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-339\" type=\"redstone_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-339\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-342\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-341\" type=\"redstone_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-342\" type=\"redstone_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-341\" type=\"redstone_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "redstone_ore",
+          "x": 801,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "redstone_ore",
+          "x": 802,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "redstone_ore",
+          "x": 803,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "redstone_ore",
+          "x": 801,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "redstone_ore",
+          "x": 802,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "redstone_ore",
+          "x": 803,
+          "y": 70,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "redstone_ore",
+          "purpose": "Make redstone_ore available in a fixed underground pocket within two vertical blocks of the actual spawn without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_controlled_pocket",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_redstone"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground redstone ore pocket for reproducible deep-resource probes. The MineRL HumanSurvival runtime keeps the actual spawn at y=72, so V1 places the pocket at y=70..71 for reset-probe-verifiable underground access.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_lapis_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-339\" type=\"lapis_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-339\" type=\"lapis_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-339\" type=\"lapis_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-342\" type=\"lapis_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-341\" type=\"lapis_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-342\" type=\"lapis_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-341\" type=\"lapis_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-339\" type=\"lapis_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-339\" type=\"lapis_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-339\" type=\"lapis_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-342\" type=\"lapis_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-341\" type=\"lapis_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-342\" type=\"lapis_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-341\" type=\"lapis_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "lapis_ore",
+          "x": 801,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "lapis_ore",
+          "x": 802,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "lapis_ore",
+          "x": 803,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "lapis_ore",
+          "x": 801,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "lapis_ore",
+          "x": 802,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "lapis_ore",
+          "x": 803,
+          "y": 70,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "lapis_ore",
+          "purpose": "Make lapis_ore available in a fixed underground pocket within two vertical blocks of the actual spawn without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_controlled_pocket",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_lapis_lazuli"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground lapis ore pocket for reproducible transfer probes. The MineRL HumanSurvival runtime keeps the actual spawn at y=72, so V1 places the pocket at y=70..71 for reset-probe-verifiable underground access.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_diamond_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-339\" type=\"diamond_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-339\" type=\"diamond_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-339\" type=\"diamond_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-342\" type=\"diamond_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-341\" type=\"diamond_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-342\" type=\"diamond_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-341\" type=\"diamond_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-339\" type=\"diamond_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-339\" type=\"diamond_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-339\" type=\"diamond_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-342\" type=\"diamond_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-341\" type=\"diamond_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-342\" type=\"diamond_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-341\" type=\"diamond_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "diamond_ore",
+          "x": 801,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "diamond_ore",
+          "x": 802,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "diamond_ore",
+          "x": 803,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "diamond_ore",
+          "x": 801,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "diamond_ore",
+          "x": 802,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "diamond_ore",
+          "x": 803,
+          "y": 70,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "diamond_ore",
+          "purpose": "Make diamond_ore available in a fixed underground pocket within two vertical blocks of the actual spawn without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_controlled_pocket",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_diamond"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground diamond ore pocket for reproducible high-value mining probes. The MineRL HumanSurvival runtime keeps the actual spawn at y=72, so V1 places the pocket at y=70..71 for reset-probe-verifiable underground access.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_emerald_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-339\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-339\" type=\"emerald_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-339\" type=\"emerald_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-342\" type=\"emerald_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-341\" type=\"emerald_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-342\" type=\"emerald_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-341\" type=\"emerald_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-339\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-339\" type=\"emerald_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-339\" type=\"emerald_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-342\" type=\"emerald_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-341\" type=\"emerald_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-342\" type=\"emerald_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-341\" type=\"emerald_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "emerald_ore",
+          "x": 801,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "emerald_ore",
+          "x": 802,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "emerald_ore",
+          "x": 803,
+          "y": 70,
+          "z": -343
+        },
+        {
+          "type": "emerald_ore",
+          "x": 801,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "emerald_ore",
+          "x": 802,
+          "y": 70,
+          "z": -339
+        },
+        {
+          "type": "emerald_ore",
+          "x": 803,
+          "y": 70,
+          "z": -339
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "emerald_ore",
+          "purpose": "Make emerald_ore available in a fixed underground pocket within two vertical blocks of the actual spawn without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_controlled_pocket",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 4,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_emerald"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground emerald ore pocket for reproducible rare-resource probes. The MineRL HumanSurvival runtime keeps the actual spawn at y=72, so V1 places the pocket at y=70..71 for reset-probe-verifiable underground access.",
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>"
+    }
+  },
+  {
+    "id": "fixed_ore_progression_shaft",
+    "env_id": "MCBenchHumanSurvival-v0",
+    "seed": 21,
+    "day_phase": "day",
+    "weather": "clear",
+    "initial_inventory": {},
+    "metadata": {
+      "start_time": 1000,
+      "allow_spawning": false,
+      "start_position": {
+        "x": 802,
+        "y": 72,
+        "z": -341,
+        "yaw": 180,
+        "pitch": 0
+      },
+      "spawn_support_decorator": "<DrawCuboid x1=\"801\" y1=\"71\" z1=\"-342\" x2=\"803\" y2=\"71\" z2=\"-340\" type=\"stone\"/>",
+      "world_decorator": "<DrawCuboid x1=\"797\" y1=\"70\" z1=\"-346\" x2=\"807\" y2=\"76\" z2=\"-336\" type=\"air\"/><DrawBlock x=\"799\" y=\"70\" z=\"-344\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"70\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-344\" type=\"redstone_ore\"/><DrawBlock x=\"799\" y=\"71\" z=\"-343\" type=\"redstone_ore\"/><DrawBlock x=\"800\" y=\"70\" z=\"-344\" type=\"diamond_ore\"/><DrawBlock x=\"800\" y=\"70\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"800\" y=\"71\" z=\"-344\" type=\"diamond_ore\"/><DrawBlock x=\"800\" y=\"71\" z=\"-343\" type=\"diamond_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-344\" type=\"lapis_ore\"/><DrawBlock x=\"801\" y=\"70\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-344\" type=\"lapis_ore\"/><DrawBlock x=\"801\" y=\"71\" z=\"-343\" type=\"lapis_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-344\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"70\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-344\" type=\"emerald_ore\"/><DrawBlock x=\"802\" y=\"71\" z=\"-343\" type=\"emerald_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-344\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"70\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-344\" type=\"gold_ore\"/><DrawBlock x=\"803\" y=\"71\" z=\"-343\" type=\"gold_ore\"/><DrawBlock x=\"804\" y=\"70\" z=\"-344\" type=\"iron_ore\"/><DrawBlock x=\"804\" y=\"70\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"804\" y=\"71\" z=\"-344\" type=\"iron_ore\"/><DrawBlock x=\"804\" y=\"71\" z=\"-343\" type=\"iron_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-344\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"70\" z=\"-343\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-344\" type=\"coal_ore\"/><DrawBlock x=\"805\" y=\"71\" z=\"-343\" type=\"coal_ore\"/>",
+      "known_blocks": [
+        {
+          "type": "redstone_ore",
+          "x": 799,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        },
+        {
+          "type": "diamond_ore",
+          "x": 800,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        },
+        {
+          "type": "lapis_ore",
+          "x": 801,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        },
+        {
+          "type": "emerald_ore",
+          "x": 802,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        },
+        {
+          "type": "gold_ore",
+          "x": 803,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        },
+        {
+          "type": "iron_ore",
+          "x": 804,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        },
+        {
+          "type": "coal_ore",
+          "x": 805,
+          "y": 70,
+          "z": -344,
+          "horizontal_radius": 6,
+          "vertical_radius": 2
+        }
+      ],
+      "controlled_resources": [
+        {
+          "resource": "redstone_ore",
+          "purpose": "Make redstone_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_redstone"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        },
+        {
+          "resource": "diamond_ore",
+          "purpose": "Make diamond_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_diamond"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        },
+        {
+          "resource": "lapis_ore",
+          "purpose": "Make lapis_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_lapis_lazuli"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        },
+        {
+          "resource": "emerald_ore",
+          "purpose": "Make emerald_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_emerald"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        },
+        {
+          "resource": "gold_ore",
+          "purpose": "Make gold_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_gold_ore",
+            "smelt_gold_ingot"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        },
+        {
+          "resource": "iron_ore",
+          "purpose": "Make iron_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "collect_iron_ore_basic",
+            "collect_iron_ore"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        },
+        {
+          "resource": "coal_ore",
+          "purpose": "Make coal_ore available in the fixed near-spawn underground gallery for long-horizon ore progression without granting target items.",
+          "placement": {
+            "type": "near_spawn_underground_multi_resource_gallery",
+            "y_band": [
+              70,
+              71
+            ],
+            "horizontal_radius": 6,
+            "vertical_radius": 2,
+            "relative_to": "actual_spawn_position"
+          },
+          "allowed_for": [
+            "scout_coal_source",
+            "collect_coal",
+            "craft_torch"
+          ],
+          "success_still_requires": [
+            "inventory evidence from real mining, pickup, or downstream crafting"
+          ]
+        }
+      ],
+      "purpose": "Deterministic near-spawn underground multi-resource gallery for continuous ore and smelting progression chains. The gallery sits at y=70..71 under the actual y=72 spawn so real reset probes can verify all resources."
+    }
+  }
+]

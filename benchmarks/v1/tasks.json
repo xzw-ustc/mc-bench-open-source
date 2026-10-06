@@ -1,0 +1,2224 @@
+[
+  {
+    "id": "scout_coal_source",
+    "name": "Scout Coal Source",
+    "domain": "exploration",
+    "instruction": "Find a reachable coal source nearby.",
+    "max_steps": 500,
+    "environment_profile": "fixed_coal_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "any_of",
+          "options": [
+            {
+              "predicate": "snapshot_path_compare",
+              "path": "raw_observation.line_of_sight.coal_ore",
+              "operator": ">=",
+              "value": 1
+            },
+            {
+              "predicate": "snapshot_path_compare",
+              "path": "raw_observation.nearby_blocks.coal_ore",
+              "operator": ">=",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "raw_observation.line_of_sight.coal_ore",
+        "kind": "primary",
+        "meaning": "Ray observation sees coal ore.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.nearby_blocks.coal_ore",
+        "kind": "primary",
+        "meaning": "Local grid contains coal ore.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.known_blocks",
+        "kind": "diagnostic",
+        "meaning": "Profile-provided marker audits deterministic coal placement but does not satisfy the verifier.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ]
+  },
+  {
+    "id": "collect_log",
+    "name": "Collect Oak Log",
+    "domain": "survival",
+    "instruction": "Collect at least one oak log.",
+    "max_steps": 400,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_log",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_log",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one oak log.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_planks",
+    "name": "Craft Oak Planks",
+    "domain": "building",
+    "instruction": "Craft oak planks from the collected oak log.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_planks",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_planks",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains crafted oak planks.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_table",
+    "name": "Craft Crafting Table",
+    "domain": "building",
+    "instruction": "Craft one crafting table from oak planks.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "crafting_table",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.crafting_table",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains a crafting table.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_wooden_pickaxe",
+    "name": "Craft Wooden Pickaxe",
+    "domain": "building",
+    "instruction": "Craft one wooden pickaxe from planks and sticks.",
+    "max_steps": 1000,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "wooden_pickaxe",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.wooden_pickaxe",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains a wooden pickaxe.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_coal",
+    "name": "Collect Coal",
+    "domain": "exploration",
+    "instruction": "Reach the discovered coal source and obtain at least one coal.",
+    "max_steps": 700,
+    "environment_profile": "fixed_coal_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "coal",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.coal",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains mined or collected coal.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      },
+      {
+        "path": "raw_observation.pickup.coal",
+        "kind": "supporting",
+        "meaning": "Pickup observation records coal collection.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.mine_block.coal_ore",
+        "kind": "supporting",
+        "meaning": "Mine-block observation records coal ore mining.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ]
+  },
+  {
+    "id": "craft_torch",
+    "name": "Craft Torch",
+    "domain": "building",
+    "instruction": "Craft at least one torch from coal and sticks.",
+    "max_steps": 220,
+    "environment_profile": "fixed_coal_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "torch",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.torch",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one torch.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "build_lit_shelter",
+    "name": "Build Lit Shelter",
+    "domain": "building",
+    "instruction": "Build or occupy a small lit shelter area.",
+    "max_steps": 1200,
+    "environment_profile": "forest_dusk",
+    "success": {
+      "all": [
+        {
+          "predicate": "snapshot_path_compare",
+          "path": "raw_observation.nearby_blocks.torch",
+          "operator": ">=",
+          "value": 1
+        },
+        {
+          "predicate": "snapshot_path_compare",
+          "path": "raw_observation.nearby_blocks.solid_blocks",
+          "operator": ">=",
+          "value": 60
+        },
+        {
+          "predicate": "snapshot_path_compare",
+          "path": "player_stats.effective_light_level",
+          "operator": ">=",
+          "value": 7
+        },
+        {
+          "predicate": "any_of",
+          "options": [
+            {
+              "predicate": "snapshot_path_compare",
+              "path": "player_stats.effective_sky_light_level",
+              "operator": "<=",
+              "value": 7
+            },
+            {
+              "predicate": "snapshot_path_compare",
+              "path": "player_stats.can_see_sky",
+              "operator": "==",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "raw_observation.nearby_blocks.torch",
+        "kind": "primary",
+        "meaning": "Local grid contains a torch.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.nearby_blocks.solid_blocks",
+        "kind": "primary",
+        "meaning": "Local grid contains enough enclosing solid blocks.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.effective_light_level",
+        "kind": "primary",
+        "meaning": "Player location has enough effective light.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.effective_sky_light_level",
+        "kind": "primary",
+        "meaning": "Player location has sufficiently low effective sky light or blocked sky exposure.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.can_see_sky",
+        "kind": "supporting",
+        "meaning": "Blocked sky exposure can satisfy the shelter enclosure proxy.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ]
+  },
+  {
+    "id": "survive_first_night",
+    "name": "Survive First Night",
+    "domain": "survival",
+    "instruction": "Remain alive through the target night interval.",
+    "max_steps": 1800,
+    "environment_profile": "forest_night",
+    "success": {
+      "all": [
+        {
+          "predicate": "flag_is_true",
+          "flag": "night_survived"
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "player_stats.world_time",
+        "kind": "primary",
+        "meaning": "World time is in or past the target night interval.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.total_time",
+        "kind": "primary",
+        "meaning": "Elapsed time covers the survival interval.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "player_stats.is_alive",
+        "kind": "primary",
+        "meaning": "Agent remains alive.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      },
+      {
+        "path": "flags.night_survived",
+        "kind": "derived",
+        "meaning": "Runner-derived night-survival flag.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ]
+  },
+  {
+    "id": "mine_cobblestone",
+    "name": "Mine Cobblestone",
+    "domain": "survival",
+    "instruction": "Use a wooden pickaxe to gather enough cobblestone for basic stone crafting.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "cobblestone",
+          "count": 2
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.cobblestone",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains enough cobblestone.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_stone_sword",
+    "name": "Craft Stone Sword",
+    "domain": "combat",
+    "instruction": "Craft a stone sword.",
+    "max_steps": 280,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "any_of",
+          "options": [
+            {
+              "predicate": "inventory_at_least",
+              "item": "stone_sword",
+              "count": 1
+            },
+            {
+              "predicate": "equipped_equals",
+              "slot": "mainhand",
+              "item": "stone_sword"
+            }
+          ]
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stone_sword",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains a stone sword.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      },
+      {
+        "path": "equipped.mainhand",
+        "kind": "supporting",
+        "meaning": "Main hand is holding a stone sword.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "defeat_zombie",
+    "name": "Defeat Zombie",
+    "domain": "combat",
+    "instruction": "Defeat at least one zombie.",
+    "max_steps": 1200,
+    "environment_profile": "forest_night",
+    "success": {
+      "all": [
+        {
+          "predicate": "counter_at_least",
+          "counter": "zombie_defeated",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "counters.zombie_defeated",
+        "kind": "primary",
+        "meaning": "Kill counter records at least one zombie defeated.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      },
+      {
+        "path": "raw_observation.kill_entity.zombie",
+        "kind": "supporting",
+        "meaning": "MineRL kill-entity observation records zombie kills.",
+        "track": "structured_state",
+        "agent_access": "evaluator_only"
+      }
+    ]
+  },
+  {
+    "id": "collect_dirt",
+    "name": "Collect Dirt",
+    "domain": "survival",
+    "instruction": "Collect at least one dirt block.",
+    "max_steps": 200,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "dirt",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.dirt",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 dirt.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_sand",
+    "name": "Collect Sand",
+    "domain": "survival",
+    "instruction": "Collect at least one sand block.",
+    "max_steps": 300,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "sand",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.sand",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 sand.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_gravel",
+    "name": "Collect Gravel",
+    "domain": "survival",
+    "instruction": "Collect at least one gravel block.",
+    "max_steps": 350,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "gravel",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.gravel",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 gravel.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_flint",
+    "name": "Collect Flint",
+    "domain": "survival",
+    "instruction": "Obtain at least one flint from gravel.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "flint",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.flint",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 flint.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_seeds",
+    "name": "Collect Seeds",
+    "domain": "survival",
+    "instruction": "Collect at least one wheat seed from grass.",
+    "max_steps": 300,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "wheat_seeds",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.wheat_seeds",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 wheat_seeds.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_flower",
+    "name": "Collect Flower",
+    "domain": "exploration",
+    "instruction": "Collect at least one simple flower.",
+    "max_steps": 300,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "poppy",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.poppy",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 poppy.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_sticks",
+    "name": "Craft Sticks",
+    "domain": "building",
+    "instruction": "Craft sticks from oak planks.",
+    "max_steps": 300,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "stick",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stick",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 4 stick.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_chest",
+    "name": "Craft Chest",
+    "domain": "building",
+    "instruction": "Craft one chest from oak planks.",
+    "max_steps": 500,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "chest",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.chest",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 chest.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_oak_boat",
+    "name": "Craft Oak Boat",
+    "domain": "building",
+    "instruction": "Craft one oak boat.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_boat",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_boat",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 oak_boat.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_wooden_axe",
+    "name": "Craft Wooden Axe",
+    "domain": "building",
+    "instruction": "Craft one wooden axe.",
+    "max_steps": 800,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "wooden_axe",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.wooden_axe",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 wooden_axe.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_wooden_sword",
+    "name": "Craft Wooden Sword",
+    "domain": "combat",
+    "instruction": "Craft one wooden sword.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "wooden_sword",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.wooden_sword",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 wooden_sword.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_wooden_shovel",
+    "name": "Craft Wooden Shovel",
+    "domain": "building",
+    "instruction": "Craft one wooden shovel.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "wooden_shovel",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.wooden_shovel",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 wooden_shovel.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_furnace",
+    "name": "Craft Furnace",
+    "domain": "building",
+    "instruction": "Craft one furnace from cobblestone.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "furnace",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.furnace",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 furnace.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_iron_ore_basic",
+    "name": "Collect Iron Ore Basic",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one iron ore before smelting.",
+    "max_steps": 1200,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "iron_ore",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.iron_ore",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 iron_ore.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "smelt_iron_ingot",
+    "name": "Smelt Iron Ingot",
+    "domain": "building",
+    "instruction": "Smelt at least one iron ingot.",
+    "max_steps": 1200,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "iron_ingot",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.iron_ingot",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least 1 iron_ingot.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_birch_log",
+    "name": "Collect Birch Log",
+    "domain": "survival",
+    "instruction": "Collect at least one birch log.",
+    "max_steps": 450,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "birch_log",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.birch_log",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one birch log.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_birch_planks",
+    "name": "Craft Birch Planks",
+    "domain": "building",
+    "instruction": "Craft birch planks from a birch log.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "birch_planks",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.birch_planks",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one birch planks.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_birch_boat",
+    "name": "Craft Birch Boat",
+    "domain": "building",
+    "instruction": "Craft one birch boat.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "birch_boat",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.birch_boat",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one birch boat.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_spruce_log",
+    "name": "Collect Spruce Log",
+    "domain": "survival",
+    "instruction": "Collect at least one spruce log.",
+    "max_steps": 450,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "spruce_log",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.spruce_log",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one spruce log.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_spruce_planks",
+    "name": "Craft Spruce Planks",
+    "domain": "building",
+    "instruction": "Craft spruce planks from a spruce log.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "spruce_planks",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.spruce_planks",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one spruce planks.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_spruce_boat",
+    "name": "Craft Spruce Boat",
+    "domain": "building",
+    "instruction": "Craft one spruce boat.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "spruce_boat",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.spruce_boat",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one spruce boat.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_jungle_log",
+    "name": "Collect Jungle Log",
+    "domain": "survival",
+    "instruction": "Collect at least one jungle log.",
+    "max_steps": 450,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "jungle_log",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.jungle_log",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one jungle log.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_jungle_planks",
+    "name": "Craft Jungle Planks",
+    "domain": "building",
+    "instruction": "Craft jungle planks from a jungle log.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "jungle_planks",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.jungle_planks",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one jungle planks.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_jungle_boat",
+    "name": "Craft Jungle Boat",
+    "domain": "building",
+    "instruction": "Craft one jungle boat.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "jungle_boat",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.jungle_boat",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one jungle boat.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_acacia_log",
+    "name": "Collect Acacia Log",
+    "domain": "survival",
+    "instruction": "Collect at least one acacia log.",
+    "max_steps": 450,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "acacia_log",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.acacia_log",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one acacia log.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_acacia_planks",
+    "name": "Craft Acacia Planks",
+    "domain": "building",
+    "instruction": "Craft acacia planks from a acacia log.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "acacia_planks",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.acacia_planks",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one acacia planks.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_acacia_boat",
+    "name": "Craft Acacia Boat",
+    "domain": "building",
+    "instruction": "Craft one acacia boat.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "acacia_boat",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.acacia_boat",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one acacia boat.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_dark_oak_log",
+    "name": "Collect Dark Oak Log",
+    "domain": "survival",
+    "instruction": "Collect at least one dark oak log.",
+    "max_steps": 450,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "dark_oak_log",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.dark_oak_log",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one dark oak log.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_dark_oak_planks",
+    "name": "Craft Dark Oak Planks",
+    "domain": "building",
+    "instruction": "Craft dark oak planks from a dark oak log.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "dark_oak_planks",
+          "count": 4
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.dark_oak_planks",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one dark oak planks.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_dark_oak_boat",
+    "name": "Craft Dark Oak Boat",
+    "domain": "building",
+    "instruction": "Craft one dark oak boat.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "dark_oak_boat",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.dark_oak_boat",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one dark oak boat.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_clay_ball",
+    "name": "Collect Clay Ball",
+    "domain": "survival",
+    "instruction": "Collect at least one clay ball.",
+    "max_steps": 400,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "clay_ball",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.clay_ball",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one clay ball.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_cactus",
+    "name": "Collect Cactus",
+    "domain": "survival",
+    "instruction": "Collect at least one cactus.",
+    "max_steps": 500,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "cactus",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.cactus",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one cactus.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_sugar_cane",
+    "name": "Collect Sugar Cane",
+    "domain": "survival",
+    "instruction": "Collect at least one sugar cane.",
+    "max_steps": 500,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "sugar_cane",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.sugar_cane",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one sugar cane.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_apple",
+    "name": "Collect Apple",
+    "domain": "survival",
+    "instruction": "Collect at least one apple.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "apple",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.apple",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one apple.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_pumpkin",
+    "name": "Collect Pumpkin",
+    "domain": "exploration",
+    "instruction": "Collect at least one pumpkin.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "pumpkin",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.pumpkin",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one pumpkin.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_melon_slice",
+    "name": "Collect Melon Slice",
+    "domain": "exploration",
+    "instruction": "Collect at least one melon slice.",
+    "max_steps": 800,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "melon_slice",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.melon_slice",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one melon slice.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_red_mushroom",
+    "name": "Collect Red Mushroom",
+    "domain": "exploration",
+    "instruction": "Collect at least one red mushroom.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "red_mushroom",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.red_mushroom",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one red mushroom.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_brown_mushroom",
+    "name": "Collect Brown Mushroom",
+    "domain": "exploration",
+    "instruction": "Collect at least one brown mushroom.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "brown_mushroom",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.brown_mushroom",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one brown mushroom.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_string",
+    "name": "Collect String",
+    "domain": "combat",
+    "instruction": "Collect at least one string.",
+    "max_steps": 900,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "string",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.string",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one string.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_bone",
+    "name": "Collect Bone",
+    "domain": "combat",
+    "instruction": "Collect at least one bone.",
+    "max_steps": 900,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "bone",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.bone",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one bone.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_iron_ore",
+    "name": "Collect Iron Ore",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one iron ore.",
+    "max_steps": 1200,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "iron_ore",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.iron_ore",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one iron ore.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_gold_ore",
+    "name": "Collect Gold Ore",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one gold ore.",
+    "max_steps": 1400,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "gold_ore",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.gold_ore",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one gold ore.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_redstone",
+    "name": "Collect Redstone",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one redstone.",
+    "max_steps": 1500,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "redstone",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.redstone",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one redstone.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_lapis_lazuli",
+    "name": "Collect Lapis Lazuli",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one lapis lazuli.",
+    "max_steps": 1500,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "lapis_lazuli",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.lapis_lazuli",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one lapis lazuli.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_diamond",
+    "name": "Collect Diamond",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one diamond.",
+    "max_steps": 2000,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "diamond",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.diamond",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one diamond.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_emerald",
+    "name": "Collect Emerald",
+    "domain": "survival",
+    "instruction": "Mine and collect at least one emerald.",
+    "max_steps": 2200,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "emerald",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.emerald",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one emerald.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_bowl",
+    "name": "Craft Bowl",
+    "domain": "building",
+    "instruction": "Craft at least one bowl from planks.",
+    "max_steps": 400,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "bowl",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.bowl",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one bowl.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_ladder",
+    "name": "Craft Ladder",
+    "domain": "building",
+    "instruction": "Craft at least one ladder from sticks.",
+    "max_steps": 500,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "ladder",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.ladder",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one ladder.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_oak_sign",
+    "name": "Craft Oak Sign",
+    "domain": "building",
+    "instruction": "Craft at least one oak sign.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_sign",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_sign",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one oak sign.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_oak_fence",
+    "name": "Craft Oak Fence",
+    "domain": "building",
+    "instruction": "Craft at least one oak fence.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_fence",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_fence",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one oak fence.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_oak_door",
+    "name": "Craft Oak Door",
+    "domain": "building",
+    "instruction": "Craft at least one oak door.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_door",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_door",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one oak door.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_oak_trapdoor",
+    "name": "Craft Oak Trapdoor",
+    "domain": "building",
+    "instruction": "Craft at least one oak trapdoor.",
+    "max_steps": 600,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_trapdoor",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_trapdoor",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one oak trapdoor.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_oak_pressure_plate",
+    "name": "Craft Oak Pressure Plate",
+    "domain": "building",
+    "instruction": "Craft at least one oak pressure plate.",
+    "max_steps": 500,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "oak_pressure_plate",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.oak_pressure_plate",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one oak pressure plate.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_stone_pickaxe",
+    "name": "Craft Stone Pickaxe",
+    "domain": "building",
+    "instruction": "Craft one stone pickaxe.",
+    "max_steps": 800,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "stone_pickaxe",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stone_pickaxe",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one stone pickaxe.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_stone_axe",
+    "name": "Craft Stone Axe",
+    "domain": "building",
+    "instruction": "Craft one stone axe.",
+    "max_steps": 800,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "stone_axe",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stone_axe",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one stone axe.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_stone_shovel",
+    "name": "Craft Stone Shovel",
+    "domain": "building",
+    "instruction": "Craft one stone shovel.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "stone_shovel",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stone_shovel",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one stone shovel.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_stone_hoe",
+    "name": "Craft Stone Hoe",
+    "domain": "building",
+    "instruction": "Craft one stone hoe.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "stone_hoe",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stone_hoe",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one stone hoe.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "smelt_charcoal",
+    "name": "Smelt Charcoal",
+    "domain": "building",
+    "instruction": "Smelt at least one charcoal from a log.",
+    "max_steps": 900,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "charcoal",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.charcoal",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one charcoal.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "smelt_stone",
+    "name": "Smelt Stone",
+    "domain": "building",
+    "instruction": "Smelt at least one stone from cobblestone.",
+    "max_steps": 900,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "stone",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.stone",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one stone.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "smelt_glass",
+    "name": "Smelt Glass",
+    "domain": "building",
+    "instruction": "Smelt at least one glass from sand.",
+    "max_steps": 900,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "glass",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.glass",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one glass.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "smelt_gold_ingot",
+    "name": "Smelt Gold Ingot",
+    "domain": "building",
+    "instruction": "Smelt at least one gold ingot from gold ore.",
+    "max_steps": 1000,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "gold_ingot",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.gold_ingot",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one gold ingot.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_iron_pickaxe",
+    "name": "Craft Iron Pickaxe",
+    "domain": "building",
+    "instruction": "Craft one iron pickaxe.",
+    "max_steps": 1200,
+    "environment_profile": "fixed_ore_progression_shaft",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "iron_pickaxe",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.iron_pickaxe",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one iron pickaxe.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_white_wool",
+    "name": "Collect White Wool",
+    "domain": "survival",
+    "instruction": "Collect at least one white wool block.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "white_wool",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.white_wool",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one white wool.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_white_bed",
+    "name": "Craft White Bed",
+    "domain": "building",
+    "instruction": "Craft one white bed from wool and planks.",
+    "max_steps": 800,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "white_bed",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.white_bed",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one white bed.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_bow",
+    "name": "Craft Bow",
+    "domain": "combat",
+    "instruction": "Craft one bow from string and sticks.",
+    "max_steps": 800,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "bow",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.bow",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one bow.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_shield",
+    "name": "Craft Shield",
+    "domain": "combat",
+    "instruction": "Craft one shield from planks and an iron ingot.",
+    "max_steps": 1000,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "shield",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.shield",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one shield.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "craft_bucket",
+    "name": "Craft Bucket",
+    "domain": "building",
+    "instruction": "Craft one bucket from iron ingots.",
+    "max_steps": 1000,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "bucket",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.bucket",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one bucket.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  },
+  {
+    "id": "collect_water_bucket",
+    "name": "Collect Water Bucket",
+    "domain": "survival",
+    "instruction": "Fill a bucket with water.",
+    "max_steps": 700,
+    "environment_profile": "forest_day",
+    "success": {
+      "all": [
+        {
+          "predicate": "inventory_at_least",
+          "item": "water_bucket",
+          "count": 1
+        }
+      ]
+    },
+    "observation_sources": [
+      {
+        "path": "inventory.water_bucket",
+        "kind": "primary",
+        "meaning": "MineRL inventory contains at least one water bucket.",
+        "track": "native_perception",
+        "agent_access": "agent_visible"
+      }
+    ]
+  }
+]

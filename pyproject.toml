@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==65.5.0", "wheel==0.38.4"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mc-evobench"
+version = "1.0.0"
+description = "Graph-native Minecraft capability-chain benchmark core."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10,<3.11"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2", "numpy==1.23.5"]
+
+[project.scripts]
+mcbench = "mcbench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+norecursedirs = [".venv*", "runs", "logs", ".runtime"]

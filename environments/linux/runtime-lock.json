@@ -1,0 +1,15 @@
+{
+  "minerl": {
+    "repository": "https://github.com/yhs0602/minerl.git",
+    "commit": "e87751e2f5e631d52153cafd6ca3e86190e2672a"
+  },
+  "mcp_reborn": {
+    "repository": "https://github.com/Hexeption/MCP-Reborn.git",
+    "commit": "1e71be5bd4c49bc4d6ab0ee559c31b298b7697a3"
+  },
+  "minecraft": "1.16.5",
+  "python": "3.10",
+  "java": "8",
+  "env_server_before_sha256": "ea83babfbc764900ccda163d361ca9e9301b4c6103aa93fbe792b020742208e7",
+  "env_server_after_sha256": "d383f39cede9b9ab9bc5dca50749f5208984b0744a6762f71f101b985ef1ce92"
+}
